@@ -226,4 +226,27 @@ canvas {
 .delay-2 { animation-delay: 0.4s; }
 .delay-3 { animation-delay: 0.6s; }
 
+
+@media (width<=767px)
+{
+  .profile-section {
+    
+    flex-direction: column;
+}
+
+.left-side {
+    width: 100%;
+    padding: 20px;
+}
+
+.right-side {
+    width: 100%;
+        padding: 20px;
+}
+
+.grid-cols-2 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+}
+
 }
