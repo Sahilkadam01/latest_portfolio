@@ -3,6 +3,7 @@
 
 @layer base
 {
+  body { overflow-x: hidden; }
 
 h1
 {
@@ -90,7 +91,7 @@ canvas {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .profile-image {
@@ -186,4 +187,44 @@ canvas {
 .scroll-stack-inner .scroll-stack-card:nth-child(3) {
     background-color: rgb(139, 236, 87);
 }
+
+/* porfiole rigth section css */
+@keyframes float {
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ENTRY ANIMATIONS */
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(-60px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(60px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideTop {
+  from { opacity: 0; transform: translateY(-60px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideBottom {
+  from { opacity: 0; transform: translateY(60px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* CLASSES */
+.animate-float { animation: float 6s ease-in-out infinite; }
+.from-left { animation: slideLeft 0.9s ease forwards; }
+.from-right { animation: slideRight 0.9s ease forwards; }
+.from-top { animation: slideTop 0.9s ease forwards; }
+.from-bottom { animation: slideBottom 0.9s ease forwards; }
+
+/* STAGGER DELAYS */
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+
 }
