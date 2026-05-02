@@ -9,7 +9,7 @@ import Skills from './components/skills_section/Skills'
 import Contact from './components/contact_section/Contact'
 import Navbar from "./components/header/Header"
 import Footer from "./components/footer/Footer"
-import Achivements from "./components/achivements/Achivements"
+import Achievements from "./components/achivements/Achivements"
 
 
 function App() {
