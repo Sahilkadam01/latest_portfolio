@@ -62,7 +62,7 @@ export default function ProfileSection() {
           >
             Hi, I’m <br />
             <span className="bg-gradient-to-r from-white to-purple-500 bg-clip-text text-transparent">
-              Your Name
+              SAHIL KUMAR
             </span>
           </motion.h1>
 
@@ -88,11 +88,11 @@ export default function ProfileSection() {
             variants={item}
             className="mt-8 flex gap-4"
           >
-            <button className="px-6 py-3 rounded-lg bg-gradient-to-r from-purple-600 to-purple-500 hover:scale-105 hover:shadow-[0_0_25px_rgba(168,85,247,0.6)] transition duration-300">
+            <button to="#projects" className="px-6 py-3 rounded-lg bg-gradient-to-r from-purple-600 to-purple-500 hover:scale-105 hover:shadow-[0_0_25px_rgba(168,85,247,0.6)] transition duration-300">
               View Projects →
             </button>
 
-            <button className="px-6 py-3 rounded-lg border border-gray-600 hover:border-purple-500 hover:bg-purple-500/10 transition duration-300">
+            <button to="#contact" className="px-6 py-3 rounded-lg border border-gray-600 hover:border-purple-500 hover:bg-purple-500/10 transition duration-300">
               Contact Me →
             </button>
           </motion.div>

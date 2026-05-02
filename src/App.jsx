@@ -8,6 +8,9 @@ import Projects from "./components/projects/Projects"
 import Skills from './components/skills_section/Skills'
 import Contact from './components/contact_section/Contact'
 import Navbar from "./components/header/Header"
+import Footer from "./components/footer/Footer"
+import Achivements from "./components/achivements/Achivements"
+
 
 function App() {
 
@@ -35,18 +38,27 @@ const [loading, setLoading] = useState(true);
     <main className="main-section bg-black">
       
       <Navbar/>
-   <ProfileSection/>
-   <WhoIAm/>     
-   <section className='projects-section'>
+   <section className="profile" id="profile" >
+    <ProfileSection/>
+    </section>   
+   <section className="who-i-am" id="about" >
+    <WhoIAm/> 
+    </section>
+       
+   <section className='projects-section' id="projects">
     <Projects/>
    </section>
-  <section className='skills-section'>
+  <section className='skills-section' id="skills" >
     <Skills/>
   </section>
-   <section className="contact-section">
+  <section className='achivements-section' id="achivement" >
+    <Achievements/>
+  </section>
+
+   <section className="contact-section" id="contact" >
     <Contact/>
    </section>
-
+   <Footer/>
    </main>
    )}
    </>
