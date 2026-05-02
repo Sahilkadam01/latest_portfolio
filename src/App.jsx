@@ -10,7 +10,9 @@ import Contact from './components/contact_section/Contact'
 import Navbar from "./components/header/Header"
 import Footer from "./components/footer/Footer"
 import Achievements from "./components/achivements/Achivements"
-
+import Experience from './components/experience/Experience';
+import ScrollProgress from './components/scroller/Scroller';
+import PageTransition from './components/scroller/PageTransition';
 
 function App() {
 
@@ -33,18 +35,23 @@ const [loading, setLoading] = useState(true);
       </AnimatePresence>
 
       {!loading && (
-      
-    
+      <>
     <main className="main-section bg-black">
+      <PageTransition/>
+    <ScrollProgress/>
       
       <Navbar/>
+      
+
    <section className="profile" id="profile" >
     <ProfileSection/>
     </section>   
    <section className="who-i-am" id="about" >
     <WhoIAm/> 
     </section>
-       
+       <section className='experience' id="experience">
+        <Experience/>
+       </section>
    <section className='projects-section' id="projects">
     <Projects/>
    </section>
@@ -58,8 +65,10 @@ const [loading, setLoading] = useState(true);
    <section className="contact-section" id="contact" >
     <Contact/>
    </section>
+   
    <Footer/>
    </main>
+   </>
    )}
    </>
   )
