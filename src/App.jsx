@@ -2,7 +2,8 @@ import React from 'react'
 // import Hyperspeed from './components/Hyperspeed'
 import ProfileSection from './components/profile_section/ProfileSection'
 import WhoIAm from './components/Who-i-am/Who-i-am'
-// import Projects_cards from './components/projects/Projects_cards'
+import Projects from "./components/projects/Projects"
+import Skills from './components/skills_section/Skills'
 
 function App() {
   return (
@@ -14,10 +15,12 @@ function App() {
    /> */}
    <ProfileSection/>
    <WhoIAm/>     
-   {/* <section className='projects-section'>
-    <Projects_cards/>
-   </section> */}
-
+   <section className='projects-section'>
+    <Projects/>
+   </section>
+  <section className='skills-section'>
+    <Skills/>
+  </section>
    
    </main>
    </>
