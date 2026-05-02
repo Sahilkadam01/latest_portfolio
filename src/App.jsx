@@ -4,6 +4,7 @@ import ProfileSection from './components/profile_section/ProfileSection'
 import WhoIAm from './components/Who-i-am/Who-i-am'
 import Projects from "./components/projects/Projects"
 import Skills from './components/skills_section/Skills'
+import Contact from './components/contact_section/Contact'
 
 function App() {
   return (
@@ -21,7 +22,10 @@ function App() {
   <section className='skills-section'>
     <Skills/>
   </section>
-   
+   <section className="contact-section">
+    <Contact/>
+   </section>
+
    </main>
    </>
   )
