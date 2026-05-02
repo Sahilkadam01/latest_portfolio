@@ -33,74 +33,71 @@ const experiences = [
 export default function Experience() {
   const ref = useRef(null);
 
-  // 🔥 Scroll progress for timeline
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
 
-  // FIXED line reach issue
   const lineHeight = useTransform(scrollYProgress, [0, 0.9], ["0%", "100%"]);
 
   return (
     <section
       id="experience"
       ref={ref}
-      className="relative py-32 bg-black text-white overflow-hidden"
+      className="relative py-24 md:py-32 bg-black text-white overflow-hidden"
     >
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0b0b1f] to-black" />
 
       {/* Glow */}
-      <div className="absolute left-1/2 top-0 w-[400px] h-[400px] bg-purple-600/20 blur-[120px] -translate-x-1/2" />
+      <div className="absolute left-1/2 top-0 w-[300px] md:w-[400px] h-[300px] md:h-[400px] bg-purple-600/20 blur-[120px] -translate-x-1/2" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 md:px-6">
 
-        {/* 🔥 TITLE */}
+        {/* TITLE */}
         <motion.div
           initial={{ opacity: 0, y: 80, filter: "blur(10px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 1 }}
-          className="text-center mb-24"
+          className="text-center mb-16 md:mb-24"
         >
-          <h2 className="text-4xl md:text-5xl font-bold">
+          <h2 className="text-3xl md:text-5xl font-bold">
             My <span className="text-purple-400">Experience</span>
           </h2>
 
-          <p className="text-gray-400 mt-4">
+          <p className="text-gray-400 mt-4 text-sm md:text-base">
             A journey of learning, building, and improving every day.
           </p>
         </motion.div>
 
-        {/* 🔥 TIMELINE */}
+        {/* TIMELINE */}
         <div className="relative">
 
-          {/* Static Line */}
-          <div className="absolute left-1/2 top-0 w-[2px] h-full bg-white/10 -translate-x-1/2" />
+          {/* Line (center on desktop, left on mobile) */}
+          <div className="absolute left-4 md:left-1/2 top-0 w-[2px] h-full bg-white/10 md:-translate-x-1/2" />
 
           {/* Animated Line */}
           <motion.div
             style={{ height: lineHeight }}
-            className="absolute left-1/2 top-0 w-[2px] bg-purple-500 -translate-x-1/2 origin-top"
+            className="absolute left-4 md:left-1/2 top-0 w-[2px] bg-purple-500 md:-translate-x-1/2 origin-top"
           />
 
           {/* ITEMS */}
-          <div className="space-y-24">
+          <div className="space-y-16 md:space-y-24">
             {experiences.map((exp, i) => {
               const isLeft = i % 2 === 0;
 
               const itemRef = useRef(null);
               const isInView = useInView(itemRef, {
-                margin: "-50% 0px -50% 0px", // center trigger
+                margin: "-50% 0px -50% 0px",
               });
 
               return (
                 <div
                   ref={itemRef}
                   key={i}
-                  className={`flex items-center w-full ${
-                    isLeft ? "justify-start" : "justify-end"
-                  }`}
+                  className={`relative flex items-start md:items-center w-full
+                    ${isLeft ? "md:justify-start" : "md:justify-end"}`}
                 >
                   {/* CONTENT */}
                   <motion.div
@@ -115,23 +112,23 @@ export default function Experience() {
                       filter: "blur(0px)",
                     }}
                     transition={{ duration: 0.8 }}
-                    className="w-full md:w-[45%]"
+                    className="ml-12 md:ml-0 w-full md:w-[45%]"
                   >
-                    <h3 className="text-xl font-semibold text-purple-400">
+                    <h3 className="text-lg md:text-xl font-semibold text-purple-400">
                       {exp.role}
                     </h3>
 
-                    <p className="text-gray-400 text-sm">
+                    <p className="text-gray-400 text-xs md:text-sm">
                       {exp.company} • {exp.period}
                     </p>
 
-                    <p className="mt-3 text-gray-300 leading-relaxed">
+                    <p className="mt-2 md:mt-3 text-gray-300 text-sm md:text-base leading-relaxed">
                       {exp.description}
                     </p>
                   </motion.div>
 
                   {/* DOT */}
-                  <div className="absolute left-1/2 -translate-x-1/2">
+                  <div className="absolute left-4 md:left-1/2 md:-translate-x-1/2">
                     <motion.div
                       animate={{
                         scale: isInView ? 1.4 : 0.8,
@@ -141,7 +138,7 @@ export default function Experience() {
                           : "0 0 5px rgba(168,85,247,0.3)",
                       }}
                       transition={{ duration: 0.4 }}
-                      className="w-5 h-5 bg-purple-500 rounded-full"
+                      className="w-4 h-4 md:w-5 md:h-5 bg-purple-500 rounded-full"
                     />
                   </div>
                 </div>
