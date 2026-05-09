@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-// import profile from "../assets/profile.png";
+
 
 export default function WhoIam() {
   const ref = useRef(null);
@@ -40,7 +40,7 @@ export default function WhoIam() {
           className="flex justify-center"
         >
           <img
-            src="./src/assets/Sahil Kumar.png"
+            src="\assets\Sahil_kumar_profile.png"
             alt="about"
             className="w-[320px] rounded-2xl shadow-2xl"
           />
