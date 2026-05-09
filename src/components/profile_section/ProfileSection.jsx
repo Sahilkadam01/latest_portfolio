@@ -126,7 +126,7 @@ export default function ProfileSection() {
 
           {/* FLOATING IMAGE */}
           <motion.img
-            src="/public/assets/sahil_kumar_profile.png"
+            src="public\assets\Sahil_kumar_profile.png"
             alt="profile"
             animate={{ y: [0, -20, 0] }}
             transition={{ duration: 4, repeat: Infinity }}
