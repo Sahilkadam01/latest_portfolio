@@ -106,13 +106,14 @@ export default function ProfileSection() {
             className="mt-16 text-gray-500 text-sm"
           >
             <p className="mb-2">SCROLL DOWN</p>
-            <div className="w-5 h-10 border border-gray-500 rounded-full flex justify-center">
+            <Link to="about"><div className="w-5 h-10 border border-gray-500 rounded-full flex justify-center">
               <motion.div
                 animate={{ y: [0, 12, 0] }}
                 transition={{ repeat: Infinity, duration: 1.5 }}
                 className="w-1 h-2 bg-purple-400 rounded-full mt-2"
               />
             </div>
+            </Link>
           </motion.div>
         </div>
 
