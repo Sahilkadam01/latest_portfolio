@@ -31,10 +31,10 @@ const projects = [
   },
 
   {
-    title: "Dashboard App",
+    title: "Alarm Security System",
     desc: "Interactive dashboard with advanced data visualization and responsive modern design system.",
     img: "/projects/p3.jpg",
-    tech: ["React", "Charts", "UI/UX"],
+    tech: ["Python"],
   },
 
   {
