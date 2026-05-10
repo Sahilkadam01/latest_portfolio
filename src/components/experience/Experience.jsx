@@ -12,34 +12,34 @@ const experiences = [
     company: "Freelance",
     period: "2024 - Present",
     description:
-      "Building modern, responsive web applications using React, Tailwind CSS and smooth animations.",
+      "Building immersive React applications with premium animations and modern frontend architecture.",
   },
   {
     role: "Web Developer Intern",
     company: "XYZ Company",
     period: "2023 - 2024",
     description:
-      "Worked on real-world projects, improved UI performance, and implemented responsive layouts.",
+      "Worked on scalable UI systems, responsive layouts, and performance optimization.",
   },
   {
-    role: "Self Learning Journey",
-    company: "Personal Growth",
+    role: "Learning Journey",
+    company: "Self Growth",
     period: "2022 - 2023",
     description:
-      "Focused on mastering JavaScript, React, and UI/UX principles through consistent practice.",
+      "Focused on mastering JavaScript, React, UI/UX design, and interactive experiences.",
   },
 ];
 
 export default function Experience() {
   const ref = useRef(null);
 
-  // 🔥 SECTION SCROLL
+  // 🔥 SCROLL TIMELINE
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start center", "end end"],
   });
 
-  // 🔥 TIMELINE HEIGHT
+  // 🔥 LINE HEIGHT
   const lineHeight = useTransform(
     scrollYProgress,
     [0, 1],
@@ -52,21 +52,21 @@ export default function Experience() {
       ref={ref}
       className="
       relative
-      py-20 md:py-32
+      py-16 md:py-24
       bg-black
-      text-white
       overflow-hidden
+      text-white
       "
     >
 
       {/* 🌌 BACKGROUND */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0b0b1f] to-black" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0a0a14] to-black" />
 
       {/* 🔥 GLOW */}
       <motion.div
         animate={{
-          y: [0, 40, 0],
-          opacity: [0.3, 0.6, 0.3],
+          opacity: [0.2, 0.5, 0.2],
+          scale: [1, 1.08, 1],
         }}
         transition={{
           duration: 8,
@@ -74,13 +74,16 @@ export default function Experience() {
         }}
         className="
         absolute
-        left-1/2
         top-0
-        w-[300px] md:w-[500px]
-        h-[300px] md:h-[500px]
-        bg-purple-600/20
-        blur-[120px]
+        left-1/2
         -translate-x-1/2
+
+        w-[350px] md:w-[650px]
+        h-[350px] md:h-[650px]
+
+        bg-purple-600/20
+        blur-[140px]
+        rounded-full
         "
       />
 
@@ -90,154 +93,147 @@ export default function Experience() {
         <motion.div
           initial={{
             opacity: 0,
-            y: 60,
-            filter: "blur(8px)",
+            y: 40,
           }}
           whileInView={{
             opacity: 1,
             y: 0,
-            filter: "blur(0px)",
           }}
           transition={{
-            duration: 0.8,
+            duration: 0.6,
           }}
           viewport={{ once: false }}
-          className="text-center mb-16 md:mb-24"
+          className="text-center mb-14 md:mb-20"
         >
 
-          {/* TOP LINE */}
-          <motion.div
-            animate={{
-              width: ["0%", "100%", "0%"],
+          <motion.p
+            initial={{
+              opacity: 0,
+              letterSpacing: "0px",
+            }}
+            whileInView={{
+              opacity: 1,
+              letterSpacing: "6px",
             }}
             transition={{
-              duration: 5,
-              repeat: Infinity,
+              duration: 1,
             }}
             className="
-            h-[2px]
-            max-w-xs
-            mx-auto
-            mb-6
-            bg-gradient-to-r
-            from-transparent
-            via-purple-500
-            to-transparent
+            uppercase
+            text-xs md:text-sm
+            text-purple-400
+            mb-5
             "
-          />
+          >
+            Career Journey
+          </motion.p>
 
-          <h2 className="text-3xl md:text-5xl font-bold leading-tight">
-            My <span className="text-purple-400">Experience</span>
+          <h2
+            className="
+            text-4xl md:text-7xl
+            font-bold
+            leading-tight
+            "
+          >
+            My{" "}
+            <span
+              className="
+              text-transparent
+              bg-clip-text
+              bg-gradient-to-r
+              from-purple-400
+              to-pink-500
+              "
+            >
+              Experience
+            </span>
           </h2>
 
           <motion.p
             initial={{
               opacity: 0,
-              y: 20,
+              y: 10,
             }}
             whileInView={{
               opacity: 1,
               y: 0,
             }}
             transition={{
-              delay: 0.15,
-              duration: 0.6,
+              delay: 0.1,
             }}
             className="
-            text-gray-400
-            mt-5
-            text-sm md:text-base
+            mt-6
             max-w-2xl
             mx-auto
+
+            text-gray-400
+            text-sm md:text-base
             leading-relaxed
             "
           >
-            A journey of learning, building, and improving
-            modern digital experiences every day.
+            My path through frontend development,
+            modern UI engineering, and building
+            premium digital experiences.
           </motion.p>
         </motion.div>
 
         {/* 🔥 TIMELINE */}
         <div className="relative">
 
-          {/* LINE */}
+          {/* TREE LINE */}
           <div
             className="
             absolute
             left-5 md:left-1/2
             top-0
-            w-[2px]
+
+            w-[1px]
             h-full
+
             bg-white/10
+
             md:-translate-x-1/2
             "
           />
 
-          {/* 🔥 ACTIVE LINE */}
+          {/* ACTIVE LINE */}
           <motion.div
             style={{ height: lineHeight }}
             className="
             absolute
             left-5 md:left-1/2
             top-0
+
             w-[2px]
+
             bg-gradient-to-b
-            from-purple-400
-            to-purple-600
+            from-purple-500
+            to-pink-500
+
             md:-translate-x-1/2
-            origin-top
+
             shadow-[0_0_20px_rgba(168,85,247,0.8)]
             "
           />
 
           {/* ITEMS */}
-          <div className="space-y-16 md:space-y-24">
+          <div className="space-y-12 md:space-y-16">
 
             {experiences.map((exp, i) => {
-              const itemRef = useRef(null);
-
-              // 🔥 ITEM SCROLL
-              const { scrollYProgress: itemProgress } =
-                useScroll({
-                  target: itemRef,
-                  offset: [
-                    "start center",
-                    "center center",
-                  ],
-                });
-
-              // 🔥 DOT ANIMATION
-              const dotScale = useTransform(
-                itemProgress,
-                [0, 1],
-                [0.8, 1.5]
-              );
-
-              const dotOpacity = useTransform(
-                itemProgress,
-                [0, 1],
-                [0.4, 1]
-              );
-
-              const glowOpacity = useTransform(
-                itemProgress,
-                [0, 1],
-                [0.2, 1]
-              );
-
               const isLeft = i % 2 === 0;
 
               return (
                 <div
                   key={i}
-                  ref={itemRef}
                   className={`
                   relative
-                  flex items-start md:items-center
-                  w-full
-                  ${isLeft
+                  flex items-center
+
+                  ${
+                    isLeft
                       ? "md:justify-start"
-                      : "md:justify-end"}
+                      : "md:justify-end"
+                  }
                   `}
                 >
 
@@ -245,21 +241,23 @@ export default function Experience() {
                   <motion.div
                     initial={{
                       opacity: 0,
-                      y: 40,
-                      x: isLeft ? -40 : 40,
+                      x: isLeft ? -120 : 120,
+                      y: 20,
                       scale: 0.96,
+                      filter: "blur(10px)",
                     }}
 
                     whileInView={{
                       opacity: 1,
-                      y: 0,
                       x: 0,
+                      y: 0,
                       scale: 1,
+                      filter: "blur(0px)",
                     }}
 
                     transition={{
-                      duration: 0.55,
-                      ease: [0.22, 1, 0.36, 1],
+                      duration: 0.6,
+                      ease: [0.25, 1, 0.5, 1],
                     }}
 
                     viewport={{
@@ -268,79 +266,159 @@ export default function Experience() {
                     }}
 
                     whileHover={{
-                      y: -4,
-                      scale: 1.01,
+                      y: -8,
                     }}
 
                     className="
+                    group
                     relative
-                    ml-14 md:ml-0
-                    w-full md:w-[44%]
 
-                    rounded-3xl
-                    border border-white/10
-                    bg-white/5
+                    ml-14 md:ml-0
+                    w-full md:w-[42%]
+
+                    p-5 md:p-7
+
+                    rounded-[28px]
+
+                    bg-white/[0.04]
                     backdrop-blur-xl
 
-                    p-5 md:p-8
-
-                    hover:border-purple-500/20
-                    transition duration-500
                     overflow-hidden
+
+                    transition-all duration-500
                     "
                   >
 
-                    {/* 🔥 SHINE EFFECT */}
+                    {/* BORDER */}
                     <div
                       className="
                       absolute inset-0
-                      opacity-0 group-hover:opacity-100
-                      transition duration-700
-                      bg-[linear-gradient(120deg,transparent,rgba(255,255,255,0.06),transparent)]
+
+                      rounded-[28px]
+
+                      border border-white/10
+
+                      group-hover:border-purple-500/20
+
+                      transition duration-500
                       "
                     />
 
-                    {/* ROLE */}
-                    <h3
+                    {/* LIGHT EFFECT */}
+                    <motion.div
+                      animate={{
+                        x: ["-100%", "180%"],
+                      }}
+                      transition={{
+                        duration: 6,
+                        repeat: Infinity,
+                        ease: "linear",
+                      }}
+                      className="
+                      absolute
+                      top-0
+                      left-0
+
+                      w-[35%]
+                      h-full
+
+                      bg-gradient-to-r
+                      from-transparent
+                      via-white/10
+                      to-transparent
+
+                      skew-x-[-20deg]
+                      blur-2xl
+                      "
+                    />
+
+                    {/* PERIOD */}
+                    <div
                       className="
                       relative z-10
-                      text-lg md:text-2xl
+
+                      inline-flex
+
+                      px-4 py-2
+
+                      rounded-full
+
+                      bg-purple-500/10
+
+                      text-purple-300
+                      text-sm
+
+                      border border-purple-500/20
+                      "
+                    >
+                      {exp.period}
+                    </div>
+
+                    {/* ROLE */}
+                    <motion.h3
+                      initial={{
+                        opacity: 0,
+                        y: 12,
+                      }}
+
+                      whileInView={{
+                        opacity: 1,
+                        y: 0,
+                      }}
+
+                      transition={{
+                        delay: 0.05,
+                        duration: 0.4,
+                      }}
+
+                      className="
+                      relative z-10
+
+                      mt-5
+
+                      text-2xl md:text-3xl
                       font-semibold
-                      text-purple-400
                       "
                     >
                       {exp.role}
-                    </h3>
+                    </motion.h3>
 
                     {/* COMPANY */}
                     <p
                       className="
                       relative z-10
-                      text-gray-400
-                      text-xs md:text-sm
-                      mt-2
+
+                      mt-3
+
+                      text-purple-400
+                      text-sm md:text-base
                       "
                     >
-                      {exp.company} • {exp.period}
+                      {exp.company}
                     </p>
 
                     {/* DESC */}
                     <motion.p
                       initial={{
                         opacity: 0,
-                        y: 15,
+                        y: 8,
                       }}
+
                       whileInView={{
                         opacity: 1,
                         y: 0,
                       }}
+
                       transition={{
-                        delay: 0.15,
-                        duration: 0.5,
+                        delay: 0.08,
+                        duration: 0.4,
                       }}
+
                       className="
                       relative z-10
-                      mt-4
+
+                      mt-5
+
                       text-gray-300
                       text-sm md:text-base
                       leading-relaxed
@@ -348,52 +426,78 @@ export default function Experience() {
                     >
                       {exp.description}
                     </motion.p>
+
+                    {/* CORNER GLOW */}
+                    <div
+                      className="
+                      absolute
+                      -bottom-10
+                      -right-10
+
+                      w-32
+                      h-32
+
+                      bg-purple-500/10
+                      blur-3xl
+                      rounded-full
+                      "
+                    />
                   </motion.div>
 
                   {/* 🔥 DOT */}
-                  <div
+                  <motion.div
+                    whileInView={{
+                      scale: [0.8, 1.3, 1],
+                    }}
+
+                    transition={{
+                      duration: 0.5,
+                    }}
+
                     className="
                     absolute
                     left-5 md:left-1/2
+
                     md:-translate-x-1/2
                     "
                   >
 
-                    {/* GLOW */}
-                    <motion.div
-                      style={{
-                        opacity: glowOpacity,
-                      }}
+                    {/* OUTER GLOW */}
+                    <div
                       className="
                       absolute
-                      inset-0
-                      w-5 h-5
-                      md:w-6 md:h-6
-                      bg-purple-500
+
+                      w-10
+                      h-10
+
                       rounded-full
+
+                      bg-purple-500/30
+
                       blur-xl
-                      -translate-x-1/4
-                      -translate-y-1/4
                       "
                     />
 
-                    {/* DOT */}
-                    <motion.div
-                      style={{
-                        scale: dotScale,
-                        opacity: dotOpacity,
-                      }}
+                    {/* INNER DOT */}
+                    <div
                       className="
                       relative
-                      w-4 h-4
-                      md:w-5 md:h-5
+
+                      w-5
+                      h-5
+
                       rounded-full
-                      bg-purple-500
+
+                      bg-gradient-to-r
+                      from-purple-500
+                      to-pink-500
+
                       border-4 border-black
-                      shadow-[0_0_25px_rgba(168,85,247,0.8)]
+
+                      shadow-[0_0_20px_rgba(168,85,247,0.9)]
                       "
                     />
-                  </div>
+                  </motion.div>
                 </div>
               );
             })}

@@ -1,55 +1,96 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import { FiArrowUpRight, FiGithub } from "react-icons/fi";
+import {
+  motion,
+  AnimatePresence,
+} from "framer-motion";
+
+import {
+  useState,
+  useEffect,
+} from "react";
+
+import {
+  FiArrowUpRight,
+  FiGithub,
+  FiChevronLeft,
+  FiChevronRight,
+} from "react-icons/fi";
 
 const projects = [
   {
     title: "Portfolio Website",
-    desc: "Modern animated portfolio using React and Framer Motion.",
+    desc: "Modern animated portfolio using React and Framer Motion with immersive UI interactions and cinematic effects.",
     img: "/projects/p1.jpg",
+    tech: ["React", "Framer Motion", "Tailwind"],
   },
+
   {
     title: "E-commerce UI",
-    desc: "Clean and responsive shopping interface.",
+    desc: "Clean and responsive shopping experience with premium modern layouts and smooth animations.",
     img: "/projects/p2.jpg",
+    tech: ["React", "Redux", "Tailwind"],
   },
+
   {
     title: "Dashboard App",
-    desc: "Data visualization dashboard with charts.",
+    desc: "Interactive dashboard with advanced data visualization and responsive modern design system.",
     img: "/projects/p3.jpg",
+    tech: ["React", "Charts", "UI/UX"],
   },
+
   {
     title: "Landing Page",
-    desc: "High-converting landing page design.",
+    desc: "High-converting landing page focused on premium visuals and engaging user experience.",
     img: "/projects/p4.jpg",
+    tech: ["Frontend", "Animations", "Design"],
   },
 ];
 
 export default function Projects() {
-  const ref = useRef(null);
+  const [current, setCurrent] = useState(0);
 
-  // 🔥 SCROLL
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
+  // 🔥 AUTOPLAY
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) =>
+        prev === projects.length - 1 ? 0 : prev + 1
+      );
+    }, 5000);
 
-  // 🔥 PARALLAX
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+    return () => clearInterval(interval);
+  }, []);
+
+  const nextSlide = () => {
+    setCurrent((prev) =>
+      prev === projects.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevSlide = () => {
+    setCurrent((prev) =>
+      prev === 0 ? projects.length - 1 : prev - 1
+    );
+  };
 
   return (
     <section
-      ref={ref}
-      className="relative py-20 md:py-32 bg-black text-white overflow-hidden"
+      id="projects"
+      className="
+      relative
+      py-20 md:py-28
+      bg-black
+      overflow-hidden
+      text-white
+      "
     >
-      {/* BACKGROUND */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-[#090912] to-black" />
 
-      {/* GLOW */}
+      {/* 🌌 BACKGROUND */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0b0b14] to-black" />
+
+      {/* 🔥 GLOW */}
       <motion.div
         animate={{
-          x: [0, 50, 0],
-          y: [0, -50, 0],
+          x: [0, 60, 0],
+          y: [0, -60, 0],
         }}
         transition={{
           duration: 10,
@@ -58,40 +99,36 @@ export default function Projects() {
         className="
         absolute
         top-0
-        left-0
-        w-[300px]
-        md:w-[500px]
-        h-[300px]
-        md:h-[500px]
+        left-1/2
+        -translate-x-1/2
+
+        w-[280px] md:w-[650px]
+        h-[280px] md:h-[650px]
+
         bg-purple-600/20
         blur-[140px]
         rounded-full
         "
       />
 
-      <motion.div
-        style={{ y }}
-        className="relative z-10 max-w-7xl mx-auto px-4 md:px-6"
-      >
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
 
         {/* 🔥 TITLE */}
         <motion.div
           initial={{
             opacity: 0,
-            y: 80,
+            y: 40,
           }}
           whileInView={{
             opacity: 1,
             y: 0,
           }}
           transition={{
-            duration: 1,
+            duration: 0.7,
           }}
-          viewport={{ once: false }}
-          className="text-center mb-16 md:mb-24"
+          className="text-center mb-14 md:mb-20"
         >
 
-          {/* SMALL TEXT */}
           <motion.p
             animate={{
               opacity: [0.5, 1, 0.5],
@@ -101,272 +138,492 @@ export default function Projects() {
               repeat: Infinity,
             }}
             className="
-            text-purple-400
             uppercase
             tracking-[6px]
-            text-sm
+
+            text-purple-400
+            text-xs md:text-sm
+
             mb-5
             "
           >
             Featured Work
           </motion.p>
 
-          <h2 className="text-3xl md:text-6xl font-bold leading-tight">
-            Selected <span className="text-purple-400">Projects</span>
+          <h2
+            className="
+            text-4xl sm:text-5xl md:text-7xl
+            font-bold
+            leading-tight
+            "
+          >
+            Selected{" "}
+
+            <span
+              className="
+              text-transparent
+              bg-clip-text
+              bg-gradient-to-r
+              from-purple-400
+              via-pink-500
+              to-purple-300
+              "
+            >
+              Projects
+            </span>
           </h2>
 
           <p
             className="
-            mt-6
-            text-gray-400
+            mt-5
+
             max-w-2xl
             mx-auto
-            leading-relaxed
+
+            text-gray-400
             text-sm md:text-base
+
+            leading-relaxed
+            px-2
             "
           >
-            A showcase of immersive interfaces, responsive experiences,
-            and high-performance frontend applications.
+            Premium frontend experiences crafted
+            with modern UI, smooth interactions,
+            and immersive animations.
           </p>
         </motion.div>
 
-        {/* 🔥 PROJECTS */}
-        <div className="space-y-14 md:space-y-24">
+        {/* 🔥 SLIDER */}
+        <div
+          className="
+          relative
 
-          {projects.map((project, i) => {
-            const reverse = i % 2 !== 0;
+          rounded-[30px]
 
-            return (
-              <motion.div
-                key={i}
-                initial={{
-                  opacity: 0,
-                  y: 120,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                transition={{
-                  duration: 1,
-                  delay: i * 0.1,
-                }}
-                viewport={{ once: false, amount: 0.2 }}
-                className={`
-                grid lg:grid-cols-2 gap-8 md:gap-14 items-center
-                ${reverse ? "lg:grid-flow-dense" : ""}
-                `}
+          border border-white/10
+
+          bg-white/[0.04]
+          backdrop-blur-xl
+
+          overflow-hidden
+          "
+        >
+
+          <AnimatePresence mode="wait">
+
+            <motion.div
+              key={current}
+              initial={{
+                opacity: 0,
+                scale: 1.03,
+              }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+              }}
+              exit={{
+                opacity: 0,
+                scale: 0.97,
+              }}
+              transition={{
+                duration: 0.7,
+              }}
+              className="
+              grid
+              lg:grid-cols-2
+              "
+            >
+
+              {/* 🔥 IMAGE */}
+              <div
+                className="
+                relative
+
+                h-[260px]
+                sm:h-[350px]
+                md:h-[450px]
+                lg:h-[650px]
+
+                overflow-hidden
+                "
               >
 
-                {/* 🔥 IMAGE */}
-                <motion.div
-                  whileHover={{
-                    scale: 1.02,
-                  }}
-                  transition={{
-                    duration: 0.5,
-                  }}
-                  className={`
-                  relative group overflow-hidden rounded-3xl
-                  ${reverse ? "lg:col-start-2" : ""}
-                  `}
-                >
-
-                  {/* IMAGE */}
-                  <img
-                    src={project.img}
-                    alt={project.title}
-                    className="
-                    w-full
-                    h-[280px]
-                    sm:h-[400px]
-                    md:h-[500px]
-                    object-cover
-                    transition duration-700
-                    group-hover:scale-105
-                    "
-                  />
-
-                  {/* OVERLAY */}
-                  <div
-                    className="
-                    absolute inset-0
-                    bg-gradient-to-t
-                    from-black via-black/30 to-transparent
-                    "
-                  />
-
-                  {/* LIGHT EFFECT */}
-                  <motion.div
-                    animate={{
-                      x: ["-100%", "250%"],
-                    }}
-                    transition={{
-                      duration: 5,
-                      repeat: Infinity,
-                      ease: "linear",
-                    }}
-                    className="
-                    absolute inset-y-0
-                    w-[20%]
-                    bg-white/10
-                    blur-2xl
-                    rotate-12
-                    "
-                  />
-
-                  {/* BORDER */}
-                  <div
-                    className="
-                    absolute inset-0
-                    rounded-3xl
-                    border border-white/10
-                    group-hover:border-purple-500/30
-                    transition duration-500
-                    "
-                  />
-                </motion.div>
-
-                {/* 🔥 CONTENT */}
-                <motion.div
+                <motion.img
+                  src={projects[current].img}
+                  alt={projects[current].title}
                   initial={{
-                    opacity: 0,
-                    x: reverse ? -80 : 80,
+                    scale: 1.1,
                   }}
-                  whileInView={{
-                    opacity: 1,
-                    x: 0,
+                  animate={{
+                    scale: 1,
                   }}
                   transition={{
                     duration: 1,
                   }}
-                  viewport={{ once: false }}
-                  className={`
-                  relative
-                  ${reverse ? "lg:col-start-1" : ""}
-                  `}
+                  className="
+                  w-full
+                  h-full
+                  object-cover
+                  "
+                />
+
+                {/* OVERLAY */}
+                <div
+                  className="
+                  absolute inset-0
+
+                  bg-gradient-to-t
+                  from-black
+                  via-black/20
+                  to-transparent
+                  "
+                />
+
+                {/* NUMBER */}
+                <h1
+                  className="
+                  absolute
+                  bottom-4 md:bottom-6
+                  left-4 md:left-6
+
+                  text-5xl md:text-8xl
+                  font-black
+
+                  text-white/10
+                  "
+                >
+                  0{current + 1}
+                </h1>
+
+                {/* LIGHT EFFECT */}
+                <motion.div
+                  animate={{
+                    x: ["-100%", "250%"],
+                  }}
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                  className="
+                  absolute inset-y-0
+
+                  w-[20%]
+
+                  bg-white/10
+                  blur-2xl
+                  rotate-12
+                  "
+                />
+              </div>
+
+              {/* 🔥 CONTENT */}
+              <div
+                className="
+                flex flex-col
+                justify-center
+
+                p-5 sm:p-8 md:p-12 lg:p-14
+                "
+              >
+
+                <motion.p
+                  initial={{
+                    opacity: 0,
+                    y: 20,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  transition={{
+                    delay: 0.1,
+                  }}
+                  className="
+                  uppercase
+                  tracking-[4px]
+
+                  text-purple-400
+                  text-xs md:text-sm
+                  "
+                >
+                  Case Study
+                </motion.p>
+
+                <motion.h3
+                  initial={{
+                    opacity: 0,
+                    y: 30,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  transition={{
+                    delay: 0.15,
+                  }}
+                  className="
+                  mt-4
+
+                  text-3xl sm:text-4xl md:text-6xl
+                  font-bold
+
+                  leading-tight
+                  "
+                >
+                  {projects[current].title}
+                </motion.h3>
+
+                <motion.p
+                  initial={{
+                    opacity: 0,
+                    y: 30,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  transition={{
+                    delay: 0.2,
+                  }}
+                  className="
+                  mt-5 md:mt-6
+
+                  text-gray-400
+
+                  leading-relaxed
+
+                  text-sm md:text-lg
+                  "
+                >
+                  {projects[current].desc}
+                </motion.p>
+
+                {/* TECH */}
+                <motion.div
+                  initial={{
+                    opacity: 0,
+                    y: 20,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  transition={{
+                    delay: 0.25,
+                  }}
+                  className="
+                  flex flex-wrap
+                  gap-3
+
+                  mt-6 md:mt-8
+                  "
                 >
 
-                  {/* NUMBER */}
-                  <h1
-                    className="
-                    absolute
-                    -top-10
-                    left-0
-                    text-[80px]
-                    md:text-[120px]
-                    font-black
-                    text-white/5
-                    leading-none
-                    "
-                  >
-                    0{i + 1}
-                  </h1>
-
-                  <div className="relative z-10">
-
-                    <motion.h3
+                  {projects[current].tech.map((tech, index) => (
+                    <motion.span
+                      key={index}
                       whileHover={{
-                        x: 5,
+                        y: -3,
                       }}
                       className="
-                      text-3xl md:text-5xl
-                      font-bold
-                      text-white
+                      px-4 py-2
+
+                      rounded-full
+
+                      bg-white/5
+                      border border-white/10
+
+                      text-xs md:text-sm
                       "
                     >
-                      <span className="text-purple-400">
-                        {project.title}
-                      </span>
-                    </motion.h3>
-
-                    <p
-                      className="
-                      mt-6
-                      text-gray-400
-                      leading-relaxed
-                      text-sm md:text-lg
-                      "
-                    >
-                      {project.desc}
-                    </p>
-
-                    {/* TECH */}
-                    <div className="flex flex-wrap gap-3 mt-8">
-
-                      {["React", "Tailwind", "Framer"].map(
-                        (tech, index) => (
-                          <motion.span
-                            key={index}
-                            whileHover={{
-                              y: -3,
-                            }}
-                            className="
-                            px-4 py-2
-                            rounded-full
-                            bg-white/5
-                            border border-white/10
-                            text-sm
-                            "
-                          >
-                            {tech}
-                          </motion.span>
-                        )
-                      )}
-                    </div>
-
-                    {/* BUTTONS */}
-                    <div className="flex gap-4 mt-10">
-
-                      <motion.button
-                        whileHover={{
-                          scale: 1.05,
-                        }}
-                        whileTap={{
-                          scale: 0.95,
-                        }}
-                        className="
-                        flex items-center gap-2
-                        px-6 py-3
-                        rounded-xl
-                        bg-purple-600
-                        shadow-[0_0_25px_rgba(168,85,247,0.35)]
-                        "
-                      >
-                        Live Demo
-                        <FiArrowUpRight />
-                      </motion.button>
-
-                      <motion.button
-                        whileHover={{
-                          scale: 1.05,
-                        }}
-                        whileTap={{
-                          scale: 0.95,
-                        }}
-                        className="
-                        flex items-center gap-2
-                        px-6 py-3
-                        rounded-xl
-                        border border-white/15
-                        bg-white/5
-                        hover:bg-white
-                        hover:text-black
-                        transition
-                        "
-                      >
-                        Code
-                        <FiGithub />
-                      </motion.button>
-                    </div>
-
-                  </div>
+                      {tech}
+                    </motion.span>
+                  ))}
                 </motion.div>
-              </motion.div>
-            );
-          })}
+
+                {/* BUTTONS */}
+                <motion.div
+                  initial={{
+                    opacity: 0,
+                    y: 20,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  transition={{
+                    delay: 0.3,
+                  }}
+                  className="
+                  flex flex-wrap
+                  gap-4
+
+                  mt-8 md:mt-10
+                  "
+                >
+
+                  <motion.button
+                    whileHover={{
+                      scale: 1.05,
+                    }}
+                    whileTap={{
+                      scale: 0.95,
+                    }}
+                    className="
+                    flex items-center gap-2
+
+                    px-5 md:px-6
+                    py-3
+
+                    rounded-xl
+
+                    text-sm md:text-base
+
+                    bg-gradient-to-r
+                    from-purple-600
+                    to-pink-500
+
+                    shadow-[0_0_25px_rgba(168,85,247,0.35)]
+                    "
+                  >
+                    Live Demo
+                    <FiArrowUpRight />
+                  </motion.button>
+
+                  <motion.button
+                    whileHover={{
+                      scale: 1.05,
+                    }}
+                    whileTap={{
+                      scale: 0.95,
+                    }}
+                    className="
+                    flex items-center gap-2
+
+                    px-5 md:px-6
+                    py-3
+
+                    rounded-xl
+
+                    text-sm md:text-base
+
+                    border border-white/15
+
+                    bg-white/5
+
+                    hover:bg-white
+                    hover:text-black
+
+                    transition
+                    "
+                  >
+                    Code
+                    <FiGithub />
+                  </motion.button>
+                </motion.div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* 🔥 NAVIGATION */}
+          <div
+            className="
+            absolute
+
+            bottom-4 md:bottom-6
+            right-4 md:right-6
+
+            flex gap-3
+            z-20
+            "
+          >
+
+            <motion.button
+              whileHover={{
+                scale: 1.1,
+              }}
+              whileTap={{
+                scale: 0.9,
+              }}
+              onClick={prevSlide}
+              className="
+              w-10 md:w-12
+              h-10 md:h-12
+
+              rounded-full
+
+              border border-white/10
+
+              bg-white/5
+              backdrop-blur-xl
+
+              flex items-center
+              justify-center
+              "
+            >
+              <FiChevronLeft />
+            </motion.button>
+
+            <motion.button
+              whileHover={{
+                scale: 1.1,
+              }}
+              whileTap={{
+                scale: 0.9,
+              }}
+              onClick={nextSlide}
+              className="
+              w-10 md:w-12
+              h-10 md:h-12
+
+              rounded-full
+
+              bg-purple-600
+
+              flex items-center
+              justify-center
+
+              shadow-[0_0_20px_rgba(168,85,247,0.5)]
+              "
+            >
+              <FiChevronRight />
+            </motion.button>
+          </div>
+
+          {/* 🔥 DOTS */}
+          <div
+            className="
+            absolute
+            bottom-5
+            left-1/2
+            -translate-x-1/2
+
+            flex gap-2
+            z-20
+            "
+          >
+
+            {projects.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrent(index)}
+                className={`
+                  transition-all duration-300
+
+                  ${
+                    current === index
+                      ? "w-8 bg-purple-500"
+                      : "w-2 bg-white/30"
+                  }
+
+                  h-2 rounded-full
+                `}
+              />
+            ))}
+          </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

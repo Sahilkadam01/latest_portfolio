@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
-import {React} from "react";
+import React from "react";
 import { Link } from "react-scroll";
-
 
 const container = {
   hidden: {},
@@ -13,45 +12,113 @@ const container = {
 };
 
 const item = {
-  hidden: { opacity: 0, y: 40, filter: "blur(10px)" },
+  hidden: {
+    opacity: 0,
+    y: 40,
+    filter: "blur(10px)",
+  },
+
   show: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.8, ease: "easeOut" },
+
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
   },
 };
 
 export default function ProfileSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-black text-white overflow-hidden">
+    <section
+      className="
+      relative
+      min-h-screen
 
-      {/* 🌌 BACKGROUND GLOW */}
+      flex items-center
+      justify-center
+
+      bg-black
+      text-white
+      overflow-hidden
+
+      pt-28 pb-16
+      md:py-0
+      "
+    >
+
+      {/* 🌌 BACKGROUND */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-[#0b0b1a] to-black" />
 
-      {/* PURPLE RADIAL GLOW */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-600/20 blur-[120px] rounded-full" />
+      {/* 🔥 BIG GLOW */}
+      <div
+        className="
+        absolute
+        right-0
+        top-1/2
+        -translate-y-1/2
 
-      {/* SMALL PARTICLES */}
+        w-[300px] md:w-[650px]
+        h-[300px] md:h-[650px]
+
+        bg-purple-600/20
+        blur-[120px]
+        rounded-full
+        "
+      />
+
+      {/* ✨ PARTICLES */}
       <div className="absolute inset-0 opacity-20">
         <div className="w-full h-full bg-[radial-gradient(circle,_#ffffff22_1px,_transparent_1px)] [background-size:40px_40px]" />
       </div>
 
-      {/* MAIN CONTENT */}
+      {/* CONTENT */}
       <motion.div
         variants={container}
         initial="hidden"
         animate="show"
-        className="relative z-10 max-w-7xl w-full grid md:grid-cols-2 gap-10 items-center px-6"
+        className="
+        relative z-10
+
+        max-w-7xl
+        w-full
+
+        grid
+        md:grid-cols-2
+
+        gap-16 md:gap-10
+
+        items-center
+
+        px-4 md:px-6
+        "
       >
 
         {/* LEFT SIDE */}
-        <div>
+        <div className="order-2 md:order-1 text-center md:text-left">
 
           {/* BADGE */}
           <motion.div
             variants={item}
-            className="mb-6 inline-block px-4 py-1 border border-purple-500/30 rounded-full text-sm text-gray-300"
+            className="
+            mb-6
+
+            inline-flex
+
+            px-4 py-2
+
+            rounded-full
+
+            border border-purple-500/20
+
+            bg-white/5
+            backdrop-blur-md
+
+            text-xs md:text-sm
+            text-gray-300
+            "
           >
             ● AVAILABLE FOR FREELANCE
           </motion.div>
@@ -59,10 +126,27 @@ export default function ProfileSection() {
           {/* TITLE */}
           <motion.h1
             variants={item}
-            className="text-5xl md:text-6xl font-bold leading-tight"
+            className="
+            text-4xl
+            sm:text-5xl
+            md:text-7xl
+
+            font-bold
+            leading-tight
+            "
           >
             Hi, I’m <br />
-            <span className="bg-gradient-to-r from-white to-purple-500 bg-clip-text text-transparent">
+
+            <span
+              className="
+              text-transparent
+              bg-clip-text
+              bg-gradient-to-r
+              from-purple-400
+              via-pink-500
+              to-purple-300
+              "
+            >
               SAHIL KUMAR
             </span>
           </motion.h1>
@@ -70,169 +154,346 @@ export default function ProfileSection() {
           {/* SUBTITLE */}
           <motion.h2
             variants={item}
-            className="text-2xl mt-4 text-gray-300"
+            className="
+            text-xl
+            md:text-2xl
+
+            mt-5
+
+            text-gray-300
+            "
           >
             A Creative{" "}
-            <span className="text-purple-400">Frontend Developer</span>
+
+            <span className="text-purple-400">
+              Frontend Developer
+            </span>
           </motion.h2>
 
           {/* DESCRIPTION */}
           <motion.p
             variants={item}
-            className="mt-6 text-gray-400 max-w-lg"
+            className="
+            mt-6
+
+            text-gray-400
+
+            max-w-lg
+            mx-auto md:mx-0
+
+            text-sm md:text-base
+            leading-relaxed
+            "
           >
-            I build modern, responsive and interactive web experiences.
+            I build modern, responsive and immersive
+            web experiences with premium animations,
+            interactive UI and smooth user journeys.
           </motion.p>
 
           {/* BUTTONS */}
           <motion.div
             variants={item}
-            className="mt-8 flex gap-4"
+            className="
+            mt-8
+
+            flex flex-col sm:flex-row
+
+            gap-4
+
+            justify-center md:justify-start
+            "
           >
-            <Link to="projects" className="px-6 py-3 rounded-lg bg-gradient-to-r from-purple-600 to-purple-500 hover:scale-105 hover:shadow-[0_0_25px_rgba(168,85,247,0.6)] transition duration-300">
+
+            {/* BUTTON 1 */}
+            <Link
+              to="projects"
+              smooth={true}
+              duration={500}
+              className="
+              cursor-pointer
+
+              px-6 py-3
+
+              rounded-xl
+
+              bg-gradient-to-r
+              from-purple-600
+              to-pink-500
+
+              hover:scale-105
+
+              hover:shadow-[0_0_25px_rgba(168,85,247,0.6)]
+
+              transition duration-300
+              "
+            >
               View Projects →
             </Link>
-            
-            <Link to="contact" className="px-6 py-3 rounded-lg border border-gray-600 hover:border-purple-500 hover:bg-purple-500/10 transition duration-300">Contact Me →</Link>
 
-            {/* <button to="#contact" className="px-6 py-3 rounded-lg border border-gray-600 hover:border-purple-500 hover:bg-purple-500/10 transition duration-300">
+            {/* BUTTON 2 */}
+            <Link
+              to="contact"
+              smooth={true}
+              duration={500}
+              className="
+              cursor-pointer
+
+              px-6 py-3
+
+              rounded-xl
+
+              border border-white/10
+
+              bg-white/[0.03]
+              backdrop-blur-md
+
+              hover:border-purple-500/40
+              hover:bg-purple-500/10
+
+              transition duration-300
+              "
+            >
               Contact Me →
-            </button> */}
+            </Link>
           </motion.div>
 
           {/* SCROLL INDICATOR */}
           <motion.div
             variants={item}
-            className="mt-16 text-gray-500 text-sm"
+            className="
+            hidden md:flex
+
+            mt-16
+
+            flex-col
+            items-start
+
+            text-gray-500
+            text-sm
+            "
           >
             <p className="mb-2">SCROLL DOWN</p>
-            <Link to="about"><div className="w-5 h-10 border border-gray-500 rounded-full flex justify-center">
-              <motion.div
-                animate={{ y: [0, 12, 0] }}
-                transition={{ repeat: Infinity, duration: 1.5 }}
-                className="w-1 h-2 bg-purple-400 rounded-full mt-2"
-              />
-            </div>
+
+            <Link
+              to="about"
+              smooth={true}
+              duration={500}
+              className="cursor-pointer"
+            >
+              <div
+                className="
+                w-5 h-10
+
+                border border-gray-500
+                rounded-full
+
+                flex justify-center
+                "
+              >
+                <motion.div
+                  animate={{ y: [0, 12, 0] }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 1.5,
+                  }}
+                  className="
+                  w-1 h-2
+
+                  bg-purple-400
+                  rounded-full
+
+                  mt-2
+                  "
+                />
+              </div>
             </Link>
           </motion.div>
         </div>
 
-        {/* RIGHT SIDE IMAGE */}
+        {/* RIGHT SIDE */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
-          className="relative flex justify-center"
+          initial={{
+            opacity: 0,
+            scale: 0.9,
+          }}
+
+          animate={{
+            opacity: 1,
+            scale: 1,
+          }}
+
+          transition={{
+            duration: 1,
+          }}
+
+          className="
+          relative
+
+          flex justify-center
+
+          order-1 md:order-2
+          "
         >
 
-          {/* GLOW RING */}
-          <div className="absolute w-[400px] h-[400px] border border-purple-500/30 rounded-full blur-sm" />
+          {/* 🔥 ROTATING RING */}
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            className="
+            absolute
 
-          {/* FLOATING IMAGE */}
-          <motion.img
-            src="\assets\Sahil_kumar_profile.png"
-            alt="profile"
-            animate={{ y: [0, -20, 0] }}
-            transition={{ duration: 4, repeat: Infinity }}
-            className="relative w-[350px] z-10"
+            w-[280px] md:w-[430px]
+            h-[280px] md:h-[430px]
+
+            rounded-full
+
+            border border-purple-500/20
+            "
           />
 
-          {/* LIGHT SWEEP EFFECT */}
-          <div className="absolute w-[500px] h-[500px] bg-purple-500/10 blur-[120px] rounded-full" />
+          {/* 🔥 SECOND RING */}
+          <motion.div
+            animate={{ rotate: -360 }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            className="
+            absolute
 
+            w-[240px] md:w-[380px]
+            h-[240px] md:h-[380px]
+
+            rounded-full
+
+            border border-pink-500/10
+            "
+          />
+
+          {/* ✨ GLOW BEHIND IMAGE */}
+          <div
+            className="
+            absolute
+
+            w-[250px] md:w-[420px]
+            h-[250px] md:h-[420px]
+
+            rounded-full
+
+            bg-gradient-to-r
+            from-purple-500/30
+            to-pink-500/20
+
+            blur-[90px]
+            "
+          />
+
+          {/* 🔥 FLOATING GLASS BG */}
+          <div
+            className="
+            absolute
+
+            w-[240px] md:w-[370px]
+            h-[300px] md:h-[460px]
+
+            rounded-[40px]
+
+            bg-white/[0.04]
+            backdrop-blur-2xl
+
+            border border-white/10
+
+            shadow-[0_0_40px_rgba(168,85,247,0.2)]
+            "
+          />
+
+          {/* 👨 IMAGE */}
+          <motion.img
+            src="/assets/Sahil_kumar_profile.png"
+            alt="profile"
+
+            animate={{
+              y: [0, -20, 0],
+            }}
+
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+            }}
+
+            className="
+            relative z-10
+
+            w-[240px]
+            sm:w-[280px]
+            md:w-[380px]
+
+            object-contain
+            "
+          />
+
+          {/* ✨ SMALL FLOATING BALL */}
+          <motion.div
+            animate={{
+              y: [0, -20, 0],
+              x: [0, 10, 0],
+            }}
+
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+            }}
+
+            className="
+            absolute
+
+            top-10
+            right-4 md:right-10
+
+            w-10 h-10
+
+            rounded-full
+
+            bg-purple-500/30
+
+            blur-md
+            "
+          />
+
+          {/* ✨ SECOND FLOATING BALL */}
+          <motion.div
+            animate={{
+              y: [0, 20, 0],
+              x: [0, -10, 0],
+            }}
+
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+            }}
+
+            className="
+            absolute
+
+            bottom-16
+            left-4 md:left-10
+
+            w-14 h-14
+
+            rounded-full
+
+            bg-pink-500/20
+
+            blur-lg
+            "
+          />
         </motion.div>
-
       </motion.div>
     </section>
   );
 }
-
-// import { motion } from "framer-motion";
-
-// const container = {
-//   hidden: { opacity: 0 },
-//   show: {
-//     opacity: 1,
-//     transition: {
-//       staggerChildren: 0.3
-//     }
-//   }
-// };
-
-// const item = {
-//   hidden: { opacity: 0, y: 40, filter: "blur(10px)" },
-//   show: {
-//     opacity: 1,
-//     y: 0,
-//     filter: "blur(0px)",
-//     transition: { duration: 0.8, ease: "easeOut" }
-//   }
-// };
-
-// export default function ProfileSection() {
-//   return (
-//     <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black text-white px-6">
-      
-//       <motion.div
-//         variants={container}
-//         initial="hidden"
-//         animate="show"
-//         className="max-w-6xl w-full grid md:grid-cols-2 gap-10 items-center"
-//       >
-        
-//         {/* LEFT CONTENT */}
-//         <div>
-//           <motion.h1
-//             variants={item}
-//             className="text-5xl md:text-6xl font-bold leading-tight"
-//           >
-//             Hi, I'm <span className="text-purple-500">SAHIL KUMAR</span>
-//           </motion.h1>
-
-//           <motion.h2
-//             variants={item}
-//             className="text-2xl mt-4 text-gray-300"
-//           >
-//             A Creative Frontend Developer
-//           </motion.h2>
-
-//           <motion.p
-//             variants={item}
-//             className="mt-6 text-gray-400 max-w-lg"
-//           >
-//             I build modern, responsive and interactive web experiences.
-//           </motion.p>
-
-//           {/* BUTTONS */}
-//           <motion.div
-//             variants={item}
-//             className="mt-8 flex gap-4"
-//           >
-//             <button className="px-6 py-3 bg-purple-600 rounded-lg hover:scale-105 hover:shadow-lg transition">
-//               View Projects
-//             </button>
-
-//             <button className="px-6 py-3 border border-gray-600 rounded-lg hover:bg-white hover:text-black transition">
-//               Contact Me
-//             </button>
-//           </motion.div>
-//         </div>
-
-//         {/* RIGHT SIDE IMAGE */}
-//         <motion.div
-//           animate={{ y: [0, -20, 0] }}
-//           transition={{ duration: 4, repeat: Infinity }}
-//           className="flex justify-center"
-//         >
-//           <img
-//             src="./src/assets/Sahil Kumar.png"
-//             alt="profile"
-//             className="w-80 rounded-2xl shadow-2xl"
-//           />
-//         </motion.div>
-
-//       </motion.div>
-//     </section>
-//   );
-// }
-
