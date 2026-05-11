@@ -6,26 +6,26 @@ const achievements = [
     title: "Python Developer Certification",
     issuer: "IBM",
     date: "2024",
-    image: "public/assets/certificates/Python_Certificate01.jpg",
+    image: "/assets/certificates/Python_Certificate01.jpg",
   },
   {
     title: "Php & My Sql Development",
     issuer: "Eduonix",
     date: "2023",
-    image: "public/assets/certificates/Php_My_Sql_Certificate.jpeg",
+    image: "/assets/certificates/Php_My_Sql_Certificate.jpeg",
   },
   {
     title: "Full Stack Web Development",
     issuer: "Eduonix",
     date: "2022",
-    image: "public/assets/certificates/Web_Development_Certificate.jpg",
+    image: "/assets/certificates/Web_Development_Certificate.jpg",
   },
   
   {
     title: "Ethical Hacking",
     issuer: "Great Learning",
     date: "2022",
-    image: "public/assets/certificates/Ethical_Hacking.jpg",
+    image: "/assets/certificates/Ethical_Hacking.jpg",
   },
 ];
 
