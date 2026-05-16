@@ -74,12 +74,12 @@ export default function Contact() {
 
               <div className="flex items-center gap-4">
                 <FaEnvelope className="text-purple-400 text-xl" />
-                <span className="text-gray-300">your@email.com</span>
+                <span className="text-gray-300">sahilkadam2701@email.com</span>
               </div>
 
               <div className="flex items-center gap-4">
                 <FaPhoneAlt className="text-purple-400 text-xl" />
-                <span className="text-gray-300">+91 00000 00000</span>
+                <span className="text-gray-300">+91 9899936516</span>
               </div>
 
               <div className="flex items-center gap-4">

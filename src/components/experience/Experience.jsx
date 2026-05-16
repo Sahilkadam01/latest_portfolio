@@ -8,25 +8,25 @@ import { useRef } from "react";
 
 const experiences = [
   {
-    role: "Frontend Developer",
-    company: "Freelance",
-    period: "2024 - Present",
+    role: "Full Stack Developer",
+    company: "The Hustler Collective",
+    period: "2025 - Present",
     description:
-      "Building immersive React applications with premium animations and modern frontend architecture.",
+      "Worked on maintaining and enhancing MediaTek’s global website, developing high-impact landing and campaign pages. Contributed as a frontend developer with 2+ years of experience in building scalable interfaces, optimizing performance, and resolving real-time production issues in a fast-paced environment.",
+  },
+  {
+    role: "Web Developer",
+    company: "Web Plant Pvt Ltd",
+    period: "05/08/2024 - 30/12/2024",
+    description:
+      "Worked on scalable UI systems, responsive layouts, and performance optimization. Managed end-to-end frontend projects, delivering responsive and high-performance web applications on time using modern frontend technologies.",
   },
   {
     role: "Web Developer Intern",
-    company: "XYZ Company",
-    period: "2023 - 2024",
+    company: "Test Yantra",
+    period: "01/01/2024 - 30/07/2024",
     description:
-      "Worked on scalable UI systems, responsive layouts, and performance optimization.",
-  },
-  {
-    role: "Learning Journey",
-    company: "Self Growth",
-    period: "2022 - 2023",
-    description:
-      "Focused on mastering JavaScript, React, UI/UX design, and interactive experiences.",
+      "Worked as a Web Developer, building responsive and visually engaging web applications using React.js, Tailwind CSS, and modern frontend technologies. Focused on creating smooth user experiences, optimizing performance, and developing clean, scalable interfaces for real-world projects across multiple devices and screen sizes.",
   },
 ];
 
