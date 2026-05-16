@@ -13,9 +13,16 @@ import {
 } from "react-icons/si";
 
 const skills = [
+
+
+  {
+    title: "Operating System",
+    tech: ["Linux", "Ubntu", "Fedora", "Kali-Linux", "Windows", "OS"],
+    level: 100,
+  },
   {
     title: "Frontend Development",
-    tech: ["React", "JavaScript", "Tailwind", "Framer Motion"],
+    tech: ["Reactjs", "JavaScript", "Tailwind Css", "Framer Motion", "Html", "Css"],
     level: 95,
   },
   {
@@ -25,13 +32,19 @@ const skills = [
   },
   {
     title: "Backend Basics",
-    tech: ["Node.js", "Express", "MongoDB"],
+    tech: ["Node.js", "Express", "MongoDB", "DBMS", "Next.js", "PHP"],
     level: 75,
   },
+{
+    title: "Programming Languages",
+    tech: ["C", "Cpp/C++", "Python", "Java", ".Net"],
+    level: 85,
+  },
+
   {
     title: "Performance Optimization",
-    tech: ["Lazy Loading", "Code Splitting", "SEO"],
-    level: 85,
+    tech: ["Lazy Loading", "Code Splitting", "SEO", "Core-Web-Vitals", "Preload", "Prefetch"],
+    level: 100,
   },
 ];
 
