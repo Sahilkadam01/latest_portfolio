@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 import { Link } from "react-scroll";
+import TextType from "../typingEffect/TypingEffect"
 
 const container = {
   hidden: {},
@@ -166,7 +167,19 @@ export default function ProfileSection() {
             A Creative{" "}
 
             <span className="text-purple-400">
-              Frontend Developer
+              <TextType 
+  text={["Python Developer","Full Stack Developer", "Programmer"]}
+  typingSpeed={75}
+  pauseDuration={1500}
+  showCursor
+  cursorCharacter="_"
+  texts={["Python Developer","Full Stack Developer", "Programmer"]}
+  deletingSpeed={50}
+  variableSpeedEnabled={false}
+  variableSpeedMin={60}
+  variableSpeedMax={120}
+  cursorBlinkDuration={0.5}
+/>
             </span>
           </motion.h2>
 

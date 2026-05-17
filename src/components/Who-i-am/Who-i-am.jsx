@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import TextType from "../typingEffect/TypingEffect"
 import {
   FiCode,
   FiPenTool,
@@ -49,7 +50,19 @@ export default function WhoIam() {
           </h2>
 
           <p className="mt-6 text-gray-300 leading-relaxed text-sm md:text-lg">
-            I am a passionate frontend developer focused on building modern,
+            I am a passionate <TextType 
+  text={["Python Developer","Full Stack Developer", "Programmer"]}
+  typingSpeed={75}
+  pauseDuration={1500}
+  showCursor
+  cursorCharacter="_"
+  texts={["Python Developer","Full Stack Developer", "Programmer"]}
+  deletingSpeed={50}
+  variableSpeedEnabled={false}
+  variableSpeedMin={60}
+  variableSpeedMax={120}
+  cursorBlinkDuration={0.5}
+/> focused on building modern,
             responsive, and visually engaging web applications. I love creating
             smooth user experiences with clean, scalable, and efficient code.
           </p>
@@ -173,7 +186,11 @@ export default function WhoIam() {
               }}
               className="absolute bottom-16 left-8 w-2 h-2 bg-purple-300 rounded-full blur-sm"
             />
+
+            
           </motion.div>
+
+          
 
           {/* 🔥 CARDS */}
           <div className="space-y-6">
@@ -323,3 +340,17 @@ export default function WhoIam() {
     </section>
   );
 }
+
+{/* <div className="mt-8 flex justify-center">
+  <a
+    href="/assets/Sahil_Kumar_CV.pdf"
+    download
+    className="relative inline-flex items-center justify-center px-6 py-3
+    rounded-xl bg-purple-500 text-white font-medium
+    border border-purple-400/30
+    hover:bg-purple-600 hover:scale-105
+    transition duration-300 shadow-lg shadow-purple-500/20"
+  >
+    Download CV
+  </a>
+</div> */}
