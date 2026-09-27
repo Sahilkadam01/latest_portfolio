@@ -787,10 +787,7 @@
 
 
 
-import {
-  motion,
-  AnimatePresence,
-} from "framer-motion";
+import { motion, AnimatePresence, } from "framer-motion";
 
 import {
   useState,
@@ -808,7 +805,7 @@ import {
 
 
 import hotel from "/assets/projects/Hotel-site.jpeg";
-// import p2 from "../../assets/projects/p2.jpg";
+import landing from "/assets/projects/Landing-page.png";
 // import p3 from "../../assets/projects/p3.jpg";
 import bloggingSite from "/assets/projects/Blogging-site.png";
 
@@ -830,32 +827,32 @@ const projects = [
       "Tailwind",
     ],
 
-    
+
     liveUrl: "https://hotel-groups.vercel.app/",
 
-    
-    githubUrl: "https://github.com/yourusername/portfolio",
+
+    githubUrl: "https://github.com/Sahilkadam01/Hotel-Website/tree/master",
   },
 
   {
-    title: "E-commerce UI",
+    title: "Animated One Swipe Page",
 
     desc:
-      "Clean and responsive shopping experience with premium modern layouts and smooth animations.",
+      "A modern landing page designed to reveal the complete experience with a single smooth swipe. Each section transitions seamlessly with engaging animations, creating an immersive and interactive browsing experience.",
 
-    // img: p2,
+    img: landing,
 
     tech: [
-      "React",
-      "Redux",
-      "Tailwind",
+      "Html",
+      "Css",
+      "Javascript",
     ],
 
     // ADD YOUR LIVE WEBSITE LINK HERE
-    liveUrl: "https://your-live-website.com",
+    liveUrl: "https://landing-page-abm.vercel.app",
 
     // ADD YOUR GITHUB REPOSITORY LINK HERE
-    githubUrl: "https://github.com/yourusername/ecommerce",
+    githubUrl: "https://github.com/Sahilkadam01/Landing-Page/tree/main",
   },
 
   {
@@ -898,7 +895,7 @@ const projects = [
     liveUrl: "https://laspiran.vercel.app/",
 
     // ADD YOUR GITHUB REPOSITORY LINK HERE
-    githubUrl: "https://github.com/yourusername/blogging-website",
+    githubUrl: "https://github.com/Sahilkadam01/Blogging-App/tree/main",
   },
 ];
 
@@ -1189,10 +1186,10 @@ export default function Projects() {
                 className="
                 relative
 
-                h-[260px]
-                sm:h-[350px]
-                md:h-[450px]
-                lg:h-[650px]
+                h-[220px]
+                sm:h-[250px]
+                md:h-[300px]
+                lg:h-[500px]
 
                 overflow-hidden
                 "
@@ -1292,8 +1289,8 @@ export default function Projects() {
                 flex
                 flex-col
                 justify-center
-
-                p-5
+                p-[15px_15px_33px_15px]
+                md:p-5
                 sm:p-8
                 md:p-12
                 lg:p-14
@@ -1347,9 +1344,9 @@ export default function Projects() {
                   className="
                   mt-4
 
-                  text-3xl
-                  sm:text-4xl
-                  md:text-6xl
+                  text-2xl
+                  sm:text-3xl
+                  md:text-4xl
 
                   font-bold
                   leading-tight
@@ -1581,7 +1578,8 @@ export default function Projects() {
           ================================================= */}
 
           <div
-            className="
+            className="max-w-3xl
+    invisible md:visible
             absolute
             bottom-4 md:bottom-6
             right-4 md:right-6
@@ -1665,9 +1663,10 @@ export default function Projects() {
           ================================================= */}
 
           <div
-            className="
+            className="max-w-3xl md:bottom-5
             absolute
-            bottom-5
+            bottom-2
+            md:left-[58%]
             left-1/2
             -translate-x-1/2
 
@@ -1690,10 +1689,9 @@ export default function Projects() {
                   transition-all
                   duration-300
 
-                  ${
-                    current === index
-                      ? "w-8 bg-purple-500"
-                      : "w-2 bg-white/30"
+                  ${current === index
+                    ? "w-8 bg-purple-500"
+                    : "w-2 bg-white/30"
                   }
 
                   h-2
