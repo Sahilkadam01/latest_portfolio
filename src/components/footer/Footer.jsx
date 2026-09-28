@@ -77,7 +77,7 @@ export default function Footer() {
             <div className="flex gap-6">
               <motion.a
                 whileHover={{ scale: 1.2 }}
-                href="#"
+                href="https://github.com/Sahilkadam01"
                 className="text-gray-400 hover:text-purple-400 text-xl transition"
               >
                 <FaGithub />
@@ -85,7 +85,7 @@ export default function Footer() {
 
               <motion.a
                 whileHover={{ scale: 1.2 }}
-                href="#"
+                href="https://www.linkedin.com/in/sahil-kumar-913909252?utm_source=share_via&utm_content=profile&utm_medium=member_android"
                 className="text-gray-400 hover:text-purple-400 text-xl transition"
               >
                 <FaLinkedin />
@@ -93,7 +93,7 @@ export default function Footer() {
 
               <motion.a
                 whileHover={{ scale: 1.2 }}
-                href="#"
+                href="Sahilkadam2701@gmail.com"
                 className="text-gray-400 hover:text-purple-400 text-xl transition"
               >
                 <FaEnvelope />
