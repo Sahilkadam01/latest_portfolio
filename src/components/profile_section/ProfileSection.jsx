@@ -279,13 +279,13 @@ export default function ProfileSection() {
             mt-16
 
             flex-col
-            items-start
+            items-end
 
             text-gray-500
             text-sm
             "
           >
-            <p className="mb-2">SCROLL DOWN</p>
+            <p className="mb-2 relative right-[-50px]">SCROLL DOWN</p>
 
             <Link
               to="about"
