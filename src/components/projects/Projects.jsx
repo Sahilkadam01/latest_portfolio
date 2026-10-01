@@ -806,7 +806,7 @@ import {
 
 import hotel from "/assets/projects/Hotel-site.jpeg";
 import landing from "/assets/projects/Landing-page.png";
-import vayom from "/assets/projects/vayom.gif";
+import vayom from "/assets/projects/Vayom.gif";
 import bloggingSite from "/assets/projects/Blogging-site.png";
 
 
