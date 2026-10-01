@@ -806,7 +806,7 @@ import {
 
 import hotel from "/assets/projects/Hotel-site.jpeg";
 import landing from "/assets/projects/Landing-page.png";
-// import p3 from "../../assets/projects/p3.jpg";
+import vayom from "/assets/projects/vayom.gif";
 import bloggingSite from "/assets/projects/Blogging-site.png";
 
 
@@ -856,22 +856,22 @@ const projects = [
   },
 
   {
-    title: "Alarm Security System",
+    title: "Vayom.ai", 
 
     desc:
       "Interactive dashboard with advanced data visualization and responsive modern design system.",
 
-    // img: p3,
+    img: vayom,
 
     tech: [
-      "Python",
+      "Html", "Css", "Gsap", "Javascript",
     ],
 
     // ADD YOUR LIVE WEBSITE LINK HERE
-    liveUrl: "https://your-live-website.com",
+    liveUrl: "https://vayom.vercel.app",
 
     // ADD YOUR GITHUB REPOSITORY LINK HERE
-    githubUrl: "https://github.com/yourusername/alarm-security-system",
+    githubUrl: "https://github.com/Sahilkadam01/Vayom/tree/master",
   },
 
   {
