@@ -808,11 +808,34 @@ import hotel from "/assets/projects/Hotel-site.jpeg";
 import landing from "/assets/projects/Landing-page.png";
 import vayom from "/assets/projects/Vayom.gif";
 import bloggingSite from "/assets/projects/Blogging-site.png";
+import devils from "/assets/projects/devils-eye.jpg";
 
 
 
 
 const projects = [
+
+{
+    title: "Devils Eye",
+
+    desc:
+      "A real-time web-based motion detection system using Flask and OpenCV that detects movement through a camera and triggers instant security alerts.",
+
+    img: devils,
+
+    tech: [
+      "Flask", "gunicorn", "opencv-python-headless", "numpy", "python-dotenv",
+    ],
+
+
+    liveUrl: "https://devilseye.vercel.app/",
+
+
+    githubUrl: "https://github.com/Sahilkadam01/Alarm-Security-System/tree/master",
+  },
+
+
+
   {
     title: "Hotel Website",
 
