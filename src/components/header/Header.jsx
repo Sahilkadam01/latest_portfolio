@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-scroll";
 import { FiMenu, FiX } from "react-icons/fi";
 
@@ -15,27 +15,51 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
+  // Navbar background on scroll
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
+
+  // Disable background scrolling when mobile menu is open
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    // Cleanup
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  // Close menu when clicking a link
+  const handleMenuClick = () => {
+    setOpen(false);
+  };
 
   return (
     <motion.nav
       initial={{ y: -80 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
-      className={`fixed w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled
           ? "bg-black/60 backdrop-blur-lg border-b border-white/10"
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        
+      {/* NAVBAR HEADER */}
+      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative z-[60]">
         {/* LOGO */}
         <h1 className="text-xl font-bold text-white">
           <span className="text-purple-500">SAHIL </span>KUMAR
@@ -56,176 +80,105 @@ export default function Navbar() {
             >
               {link.name}
 
-              {/* UNDERLINE ANIMATION */}
-              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-purple-400 transition-all group-hover:w-full"></span>
+              {/* UNDERLINE */}
+              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-purple-400 transition-all duration-300 group-hover:w-full"></span>
             </Link>
           ))}
         </div>
 
         {/* MOBILE MENU BUTTON */}
         <div className="md:hidden text-2xl text-white">
-          <button onClick={() => setOpen(!open)}>
+          <button
+            onClick={() => setOpen(!open)}
+            className="relative z-[70] p-1"
+            aria-label="Toggle menu"
+          >
             {open ? <FiX /> : <FiMenu />}
           </button>
         </div>
       </div>
 
-      {/* MOBILE MENU */}
-      {open && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="md:hidden bg-black/90 backdrop-blur-lg border-t border-white/10"
-        >
-          <div className="flex flex-col items-center py-6 gap-6">
-            {navLinks.map((link, i) => (
-              <Link
-                key={i}
-                to={link.to}
-                smooth={true}
-                duration={500}
-                offset={-80}
-                onClick={() => setOpen(false)}
-                className="text-gray-300 text-lg hover:text-purple-400 transition"
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
-        </motion.div>
-      )}
+      {/* FULL SCREEN MOBILE MENU */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="
+              fixed
+              inset-0
+              w-full
+              h-screen
+              bg-black
+              md:hidden
+              z-50
+            "
+          >
+            {/* Purple background glow */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              <div className="absolute top-[-150px] right-[-100px] w-[300px] h-[300px] bg-purple-600/20 blur-[100px] rounded-full" />
+
+              <div className="absolute bottom-[-150px] left-[-100px] w-[300px] h-[300px] bg-purple-800/20 blur-[100px] rounded-full" />
+            </div>
+
+            {/* MOBILE LINKS */}
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{
+                duration: 0.4,
+                delay: 0.1,
+              }}
+              className="
+                relative
+                z-10
+                h-full
+                flex
+                flex-col
+                items-center
+                justify-center
+                gap-8
+              "
+            >
+              {navLinks.map((link, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.4,
+                    delay: 0.1 + i * 0.08,
+                  }}
+                >
+                  <Link
+                    to={link.to}
+                    smooth={true}
+                    duration={600}
+                    offset={-80}
+                    onClick={handleMenuClick}
+                    className="
+                      cursor-pointer
+                      text-2xl
+                      sm:text-3xl
+                      font-medium
+                      text-gray-300
+                      hover:text-purple-400
+                      transition-colors
+                    "
+                  >
+                    {link.name}
+                  </Link>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 }
 
 
 
-// import { useState, useEffect } from "react";
-// import { motion } from "framer-motion";
-// import { FiMenu, FiX } from "react-icons/fi";
-
-// const navLinks = [
-//   { name: "Home", id: "hero" },
-//   { name: "About", id: "about" },
-//   { name: "Projects", id: "projects" },
-//   { name: "Skills", id: "skills" },
-//   { name: "Contact", id: "contact" },
-// ];
-
-// export default function Navbar() {
-//   const [active, setActive] = useState("hero");
-//   const [open, setOpen] = useState(false);
-//   const [hidden, setHidden] = useState(false);
-//   const [lastScroll, setLastScroll] = useState(0);
-
-//   // 🔥 Smooth scroll
-//   const scrollToSection = (id) => {
-//     document.getElementById(id)?.scrollIntoView({
-//       behavior: "smooth",
-//     });
-//     setOpen(false);
-//   };
-
-//   // 🔥 Active section detection + hide/show navbar
-//   useEffect(() => {
-//     const handleScroll = () => {
-//       const currentScroll = window.scrollY;
-
-//       // Hide on scroll down
-//       if (currentScroll > lastScroll && currentScroll > 80) {
-//         setHidden(true);
-//       } else {
-//         setHidden(false);
-//       }
-//       setLastScroll(currentScroll);
-
-//       // Detect active section
-//       navLinks.forEach((link) => {
-//         const section = document.getElementById(link.id);
-//         if (section) {
-//           const rect = section.getBoundingClientRect();
-//           if (rect.top <= 150 && rect.bottom >= 150) {
-//             setActive(link.id);
-//           }
-//         }
-//       });
-//     };
-
-//     window.addEventListener("scroll", handleScroll);
-//     return () => window.removeEventListener("scroll", handleScroll);
-//   }, [lastScroll]);
-
-//   return (
-//     <motion.nav
-//       initial={{ y: -100 }}
-//       animate={{ y: hidden ? -100 : 0 }}
-//       transition={{ duration: 0.4 }}
-//       className="fixed w-full z-50 bg-black/50 backdrop-blur-lg border-b border-white/10"
-//     >
-//       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        
-//         {/* LOGO */}
-//         <h1 className="text-xl font-bold text-white">
-//           <span className="text-purple-500">Your</span>Name
-//         </h1>
-
-//         {/* DESKTOP MENU */}
-//         <div className="hidden md:flex gap-10 relative">
-//           {navLinks.map((link) => (
-//             <button
-//               key={link.id}
-//               onClick={() => scrollToSection(link.id)}
-//               className={`relative text-sm transition ${
-//                 active === link.id
-//                   ? "text-purple-400"
-//                   : "text-gray-300 hover:text-white"
-//               }`}
-//             >
-//               {link.name}
-
-//               {/* 🔥 ACTIVE UNDERLINE */}
-//               {active === link.id && (
-//                 <motion.span
-//                   layoutId="underline"
-//                   className="absolute left-0 -bottom-1 w-full h-[2px] bg-purple-400 rounded"
-//                 />
-//               )}
-//             </button>
-//           ))}
-//         </div>
-
-//         {/* MOBILE BUTTON */}
-//         <div className="md:hidden text-white text-2xl">
-//           <button onClick={() => setOpen(!open)}>
-//             {open ? <FiX /> : <FiMenu />}
-//           </button>
-//         </div>
-//       </div>
-
-//       {/* 🔥 MOBILE MENU */}
-//       {open && (
-//         <motion.div
-//           initial={{ opacity: 0, y: -20 }}
-//           animate={{ opacity: 1, y: 0 }}
-//           className="md:hidden bg-black/90 backdrop-blur-lg border-t border-white/10"
-//         >
-//           <div className="flex flex-col items-center py-6 gap-6">
-//             {navLinks.map((link) => (
-//               <button
-//                 key={link.id}
-//                 onClick={() => scrollToSection(link.id)}
-//                 className={`text-lg transition ${
-//                   active === link.id
-//                     ? "text-purple-400"
-//                     : "text-gray-300"
-//                 }`}
-//               >
-//                 {link.name}
-//               </button>
-//             ))}
-//           </div>
-//         </motion.div>
-//       )}
-//     </motion.nav>
-//   );
-// }

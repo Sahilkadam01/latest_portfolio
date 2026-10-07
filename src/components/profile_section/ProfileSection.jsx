@@ -40,13 +40,11 @@ export default function ProfileSection() {
 
       flex items-center
       justify-center
-
-      bg-black
       text-white
       overflow-hidden
 
       pt-28 pb-16
-      md:py-0
+      md:py-0 md:pt-28
       "
     >
 
