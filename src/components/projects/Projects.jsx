@@ -39,7 +39,7 @@ const projects = [
     img: devils,
 
     tech: [
-      "Flask", "gunicorn", "opencv-python-headless", "numpy", "python-dotenv",
+      "Python","Flask", "gunicorn", "numpy", "python-dotenv", "opencv-python-headless"
     ],
 
 
@@ -59,14 +59,14 @@ const projects = [
     img: job,
 
     tech: [
-      "Flask", "gunicorn", "opencv-python-headless", "numpy", "python-dotenv",
+      "Python", "Pypdf", "Fastapi", "Uvicorn", "Open Ai",
     ],
 
 
-    liveUrl: "#",
+    liveUrl: "https://job-hunter-automation.vercel.app/",
 
 
-    githubUrl: "#",
+    githubUrl: "https://github.com/Sahilkadam01/Job-Search-Automation/tree/master",
   },
 
 {
