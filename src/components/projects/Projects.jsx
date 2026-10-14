@@ -63,7 +63,7 @@ const projects = [
     ],
 
 
-    liveUrl: "https://job-hunter-automation.vercel.app/",
+    liveUrl: "https://job-searchs-automation.vercel.app/",
 
 
     githubUrl: "https://github.com/Sahilkadam01/Job-Search-Automation/tree/master",
