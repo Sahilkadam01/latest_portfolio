@@ -132,13 +132,9 @@ export default function Contact() {
               </motion.a>
             </div>
 
-            {/* OPTIONAL VISUAL
-            <motion.div
-              animate={{ y: [0, -15, 0] }}
-              transition={{ repeat: Infinity, duration: 4 }}
-              className="mt-10 w-40 h-40 bg-teal-400/10 rounded-full blur-2xl"
-            />
-          </motion.div> */}
+            
+           
+          </motion.div>
 
           {/* RIGHT SIDE - FORM */}
           <motion.form
