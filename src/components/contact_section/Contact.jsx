@@ -60,7 +60,7 @@ export default function Contact() {
         className="relative z-10 max-w-7xl mx-auto px-6 max-[767px]:px-[30px]"
       >
         {/* Title */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-8 md:mb-20">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-300">
             Contact Me
           </h2>
@@ -71,7 +71,7 @@ export default function Contact() {
         </div>
 
         {/* GRID */}
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* LEFT SIDE */}
           <motion.div
             initial={{ opacity: 0, x: -60 }}
