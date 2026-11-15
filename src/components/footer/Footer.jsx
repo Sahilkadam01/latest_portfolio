@@ -27,10 +27,10 @@ export default function Footer() {
   return (
     <footer className="relative bg-black text-white pt-20 pb-10 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-[#080f11] to-black" />
+      <div className="absolute inset-0 bg-black" />
 
       {/* Subtle Glow */}
-      <div className="absolute left-1/2 top-0 w-[300px] h-[300px] bg-teal-500/10 blur-[120px] -translate-x-1/2" />
+      <div className="absolute left-1/2 top-0 w-[300px] h-[300px] bg-black -translate-x-1/2" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
 
