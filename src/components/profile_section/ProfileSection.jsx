@@ -77,27 +77,6 @@ export default function ProfileSection() {
         {/* LEFT CONTENT */}
         <div className="order-2 md:order-1 text-center md:text-left">
 
-          {/* Availability
-          <motion.div
-            variants={item}
-            className="
-              flex items-center
-              justify-center md:justify-start
-              gap-3 mb-8
-            "
-          >
-            <span className="w-2 h-2 rounded-full bg-white" />
-
-            <span
-              className="
-                text-xs uppercase
-                tracking-[0.25em]
-                text-gray-400
-              "
-            >
-              Available for opportunities
-            </span>
-          </motion.div> */}
 
           {/* Main heading */}
           <motion.h1
@@ -236,7 +215,6 @@ export default function ProfileSection() {
             className="
               mt-14 sm:mt-16
               pt-6
-              border-t border-white/10
               flex flex-wrap
               justify-center md:justify-start
               gap-x-8 sm:gap-x-10

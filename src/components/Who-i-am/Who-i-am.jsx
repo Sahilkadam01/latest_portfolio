@@ -448,12 +448,10 @@ export default function WhoIam() {
         {/* ================= STATISTICS ================= */}
 
         <div className="
-          mt-20
-          md:mt-24
-          pt-10
-          md:pt-12
-          border-t
-          border-white/10
+          mt-10
+          md:mt-18
+          pt-2
+          md:pt-3         
           grid
           grid-cols-1
           sm:grid-cols-3
