@@ -60,7 +60,7 @@ export default function Contact() {
         className="relative z-10 max-w-7xl mx-auto px-6 max-[767px]:px-[30px]"
       >
         {/* Title */}
-        <div className="text-center mb-8 md:mb-20">
+        <div className="text-center mb-10 md:mb-20">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-300">
             Contact Me
           </h2>
@@ -77,7 +77,7 @@ export default function Contact() {
             initial={{ opacity: 0, x: -60 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
-            className="space-y-8"
+            className="space-y-4 md:space-y-8"
           >
             <h3 className="text-2xl font-semibold text-gray-200">
               Get in Touch
