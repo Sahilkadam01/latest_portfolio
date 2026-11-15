@@ -1,13 +1,13 @@
-import { motion } from "framer-motion";
 import React from "react";
+import { motion } from "framer-motion";
 import { Link } from "react-scroll";
-import TextType from "../typingEffect/TypingEffect"
+import TextType from "../typingEffect/TypingEffect";
 
 const container = {
   hidden: {},
   show: {
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.15,
     },
   },
 };
@@ -15,18 +15,14 @@ const container = {
 const item = {
   hidden: {
     opacity: 0,
-    y: 40,
-    filter: "blur(10px)",
+    y: 25,
   },
-
   show: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
-
     transition: {
-      duration: 0.8,
-      ease: "easeOut",
+      duration: 0.7,
+      ease: [0.22, 1, 0.36, 1],
     },
   },
 };
@@ -35,476 +31,417 @@ export default function ProfileSection() {
   return (
     <section
       className="
-      relative
-      min-h-screen
-
-      flex items-center
-      justify-center
-      text-white
-      overflow-hidden
-
-      pt-28 pb-16
-      md:py-0 md:pt-28
+        relative min-h-screen
+        flex items-center
+        overflow-hidden
+        bg-[#050505]
+        text-white
+        pt-28 pb-24
+        md:pt-24 md:pb-28
       "
     >
+      {/* Subtle background details */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div
+          className="
+            absolute top-0 left-1/2
+            -translate-x-1/2
+            w-px h-full
+            bg-white/[0.035]
+          "
+        />
 
-      {/* 🌌 BACKGROUND */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-[#0b0b1a] to-black" />
-
-      {/* 🔥 BIG GLOW */}
-      <div
-        className="
-        absolute
-        right-0
-        top-1/2
-        -translate-y-1/2
-
-        w-[300px] md:w-[650px]
-        h-[300px] md:h-[650px]
-
-        bg-purple-600/20
-        blur-[120px]
-        rounded-full
-        "
-      />
-
-      {/* ✨ PARTICLES */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="w-full h-full bg-[radial-gradient(circle,_#ffffff22_1px,_transparent_1px)] [background-size:40px_40px]" />
+        <div
+          className="
+            absolute bottom-20 left-0
+            w-full h-px
+            bg-white/[0.05]
+          "
+        />
       </div>
 
-      {/* CONTENT */}
+      {/* Main content */}
       <motion.div
         variants={container}
         initial="hidden"
         animate="show"
         className="
-        relative z-10
-
-        max-w-7xl
-        w-full
-
-        grid
-        md:grid-cols-2
-
-        gap-16 md:gap-10
-
-        items-center
-
-        px-4 md:px-6
+          relative z-10
+          max-w-7xl w-full
+          mx-auto px-5 sm:px-8 lg:px-10
+          grid grid-cols-1 md:grid-cols-2
+          gap-12 sm:gap-14 md:gap-10 lg:gap-16
+          items-center
         "
       >
-
-        {/* LEFT SIDE */}
+        {/* LEFT CONTENT */}
         <div className="order-2 md:order-1 text-center md:text-left">
 
-          {/* BADGE */}
+          {/* Availability */}
           <motion.div
             variants={item}
             className="
-            mb-6
-
-            inline-flex
-
-            px-4 py-2
-
-            rounded-full
-
-            border border-purple-500/20
-
-            bg-white/5
-            backdrop-blur-md
-
-            text-xs md:text-sm
-            text-gray-300
+              flex items-center
+              justify-center md:justify-start
+              gap-3 mb-8
             "
           >
-            ● AVAILABLE FOR FREELANCE
-          </motion.div>
-
-          {/* TITLE */}
-          <motion.h1
-            variants={item}
-            className="
-            text-4xl
-            sm:text-5xl
-            md:text-7xl
-
-            font-bold
-            leading-tight
-            "
-          >
-            Hi, I’m <br />
+            <span className="w-2 h-2 rounded-full bg-white" />
 
             <span
               className="
-              text-transparent
-              bg-clip-text
-              bg-gradient-to-r
-              from-purple-400
-              via-pink-500
-              to-purple-300
+                text-xs uppercase
+                tracking-[0.25em]
+                text-gray-400
               "
             >
-              SAHIL KUMAR
+              Available for opportunities
+            </span>
+          </motion.div>
+
+          {/* Main heading */}
+          <motion.h1
+            variants={item}
+            className="
+              text-5xl sm:text-6xl
+              md:text-6xl lg:text-7xl
+              xl:text-8xl
+              font-semibold
+              tracking-[-0.06em]
+              leading-[0.95]
+            "
+          >
+            Hello,
+            <br />
+
+            <span className="text-white">
+              I'm Sahil.
             </span>
           </motion.h1>
 
-          {/* SUBTITLE */}
-          <motion.h2
+          {/* Profession */}
+          <motion.div
             variants={item}
             className="
-            text-xl
-            md:text-2xl
-
-            mt-5
-
-            text-gray-300
+              mt-8
+              text-lg sm:text-xl
+              md:text-xl lg:text-2xl
+              text-gray-400
+              font-light
+              flex flex-wrap items-center
+              justify-center md:justify-start
+              gap-2
             "
           >
-            A Creative{" "}
+            <span>I'm a</span>
 
-            <span className="text-purple-400">
-              <TextType 
-  text={["Python Developer","Full Stack Developer", "Programmer"]}
-  typingSpeed={75}
-  pauseDuration={1500}
-  showCursor
-  cursorCharacter="_"
-  texts={["Python Developer","Full Stack Developer", "Programmer"]}
-  deletingSpeed={50}
-  variableSpeedEnabled={false}
-  variableSpeedMin={60}
-  variableSpeedMax={120}
-  cursorBlinkDuration={0.5}
-/>
+            <span className="text-white font-medium">
+              <TextType
+                text={[
+                  "Full Stack Developer",
+                  "Python Developer",
+                  "Software Developer",
+                ]}
+                typingSpeed={75}
+                pauseDuration={1500}
+                showCursor
+                cursorCharacter="_"
+                deletingSpeed={45}
+                variableSpeedEnabled={false}
+                cursorBlinkDuration={0.5}
+              />
             </span>
-          </motion.h2>
+          </motion.div>
 
-          {/* DESCRIPTION */}
+          {/* Description */}
           <motion.p
             variants={item}
             className="
-            mt-6
-
-            text-gray-400
-
-            max-w-lg
-            mx-auto md:mx-0
-
-            text-sm md:text-base
-            leading-relaxed
+              mt-7
+              max-w-xl
+              mx-auto md:mx-0
+              text-sm sm:text-base
+              leading-7 sm:leading-8
+              text-gray-400
             "
           >
-            I build modern, responsive and immersive
-            web experiences with premium animations,
-            interactive UI and smooth user journeys.
+            I build responsive web applications and digital
+            experiences with a focus on clean code, practical
+            solutions, and thoughtful user interfaces.
+            I enjoy working across the stack, from frontend
+            development to backend functionality.
           </motion.p>
 
-          {/* BUTTONS */}
+          {/* Buttons */}
           <motion.div
             variants={item}
             className="
-            mt-8
-
-            flex flex-col sm:flex-row
-
-            gap-4
-
-            justify-center md:justify-start
+              mt-9
+              flex flex-col
+              sm:flex-row
+              gap-4
+              justify-center md:justify-start
             "
           >
-
-            {/* BUTTON 1 */}
             <Link
               to="projects"
               smooth={true}
-              duration={500}
+              duration={600}
               className="
-              cursor-pointer
-
-              px-6 py-3
-
-              rounded-xl
-
-              bg-gradient-to-r
-              from-purple-600
-              to-pink-500
-
-              hover:scale-105
-
-              hover:shadow-[0_0_25px_rgba(168,85,247,0.6)]
-
-              transition duration-300
+                cursor-pointer
+                inline-flex items-center
+                justify-center
+                px-7 py-3.5
+                bg-white text-black
+                text-sm font-medium
+                rounded-full
+                border border-white
+                transition-all duration-300
+                hover:bg-transparent
+                hover:text-white
               "
             >
-              View Projects →
+              Explore My Work
+              <span className="ml-3 transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
             </Link>
 
-            {/* BUTTON 2 */}
             <Link
               to="contact"
               smooth={true}
-              duration={500}
+              duration={600}
               className="
-              cursor-pointer
-
-              px-6 py-3
-
-              rounded-xl
-
-              border border-white/10
-
-              bg-white/[0.03]
-              backdrop-blur-md
-
-              hover:border-purple-500/40
-              hover:bg-purple-500/10
-
-              transition duration-300
+                cursor-pointer
+                inline-flex items-center
+                justify-center
+                px-7 py-3.5
+                bg-transparent text-white
+                text-sm font-medium
+                rounded-full
+                border border-white/20
+                transition-all duration-300
+                hover:border-white
+                hover:bg-white/[0.05]
               "
             >
-              Contact Me →
+              Let's Talk
+              <span className="ml-3">→</span>
             </Link>
           </motion.div>
 
-          {/* SCROLL INDICATOR */}
+          {/* Bottom information */}
           <motion.div
             variants={item}
             className="
-            hidden md:flex
-
-            mt-16
-
-            flex-col
-            items-end
-
-            text-gray-500
-            text-sm
+              mt-14 sm:mt-16
+              pt-6
+              border-t border-white/10
+              flex flex-wrap
+              justify-center md:justify-start
+              gap-x-8 sm:gap-x-10
+              gap-y-5
+              text-left
             "
           >
-            <p className="mb-2 relative right-[-50px]">SCROLL DOWN</p>
+            <div>
+              <p className="text-2xl font-semibold text-white">
+                2.8+
+              </p>
 
-            <Link
-              to="about"
-              smooth={true}
-              duration={500}
-              className="cursor-pointer"
-            >
-              <div
+              <p
                 className="
-                w-5 h-10
-
-                border border-gray-500
-                rounded-full
-
-                flex justify-center
+                  mt-1 text-[10px]
+                  uppercase tracking-[0.18em]
+                  text-gray-500
                 "
               >
-                <motion.div
-                  animate={{ y: [0, 12, 0] }}
-                  transition={{
-                    repeat: Infinity,
-                    duration: 1.5,
-                  }}
-                  className="
-                  w-1 h-2
+                Years Experience
+              </p>
+            </div>
 
-                  bg-purple-400
-                  rounded-full
+            <div>
+              <p className="text-xl sm:text-2xl font-semibold text-white">
+                Full Stack
+              </p>
 
-                  mt-2
-                  "
-                />
-              </div>
-            </Link>
+              <p
+                className="
+                  mt-1 text-[10px]
+                  uppercase tracking-[0.18em]
+                  text-gray-500
+                "
+              >
+                Development
+              </p>
+            </div>
+
+            <div>
+              <p className="text-xl sm:text-2xl font-semibold text-white">
+                Web + Python
+              </p>
+
+              <p
+                className="
+                  mt-1 text-[10px]
+                  uppercase tracking-[0.18em]
+                  text-gray-500
+                "
+              >
+                Technologies
+              </p>
+            </div>
           </motion.div>
         </div>
 
-        {/* RIGHT SIDE */}
+        {/* RIGHT IMAGE */}
         <motion.div
-          initial={{
-            opacity: 0,
-            scale: 0.9,
-          }}
-
-          animate={{
-            opacity: 1,
-            scale: 1,
-          }}
-
+          initial={{ opacity: 0, x: 35 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{
             duration: 1,
+            ease: [0.22, 1, 0.36, 1],
           }}
-
           className="
-          relative
-
-          flex justify-center
-
-          order-1 md:order-2
+            relative
+            order-1 md:order-2
+            flex justify-center
+            items-center
           "
         >
-
-          {/* 🔥 ROTATING RING */}
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            className="
-            absolute
-
-            w-[280px] md:w-[430px]
-            h-[280px] md:h-[430px]
-
-            rounded-full
-
-            border border-purple-500/20
-            "
-          />
-
-          {/* 🔥 SECOND RING */}
-          <motion.div
-            animate={{ rotate: -360 }}
-            transition={{
-              duration: 25,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            className="
-            absolute
-
-            w-[240px] md:w-[380px]
-            h-[240px] md:h-[380px]
-
-            rounded-full
-
-            border border-pink-500/10
-            "
-          />
-
-          {/* ✨ GLOW BEHIND IMAGE */}
           <div
             className="
-            absolute
-
-            w-[250px] md:w-[420px]
-            h-[250px] md:h-[420px]
-
-            rounded-full
-
-            bg-gradient-to-r
-            from-purple-500/30
-            to-pink-500/20
-
-            blur-[90px]
+              relative
+              w-[230px] h-[250px]
+              sm:w-[290px] sm:h-[310px]
+              md:w-[340px] md:h-[370px]
+              lg:w-[390px] lg:h-[420px]
+              xl:w-[420px] xl:h-[440px]
             "
-          />
+          >
+            {/* Image frame */}
+            <div
+              className="
+                relative
+                w-full h-full
+                overflow-hidden
+                border border-white/10
+                bg-[#111]
+              "
+            >
+              <motion.img
+                src="/assets/Sahil_kumar_profile.png"
+                alt="Sahil Kumar - Software Developer"
+                initial={{ scale: 1.08, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{
+                  duration: 1.2,
+                  ease: "easeOut",
+                }}
+                className="
+                  relative z-10
+                  w-full h-full
+                  object-contain
+                  grayscale-[15%]
+                  hover:grayscale-0
+                  transition-all duration-700
+                "
+              />
+            </div>
 
-          {/* 🔥 FLOATING GLASS BG */}
-          <div
-            className="
-            absolute
+            {/* Minimal frame details */}
+            <div
+              className="
+                absolute -top-3 -left-3
+                w-12 h-12
+                border-t border-l
+                border-white/40
+              "
+            />
 
-            w-[240px] md:w-[370px]
-            h-[300px] md:h-[460px]
-
-            rounded-[40px]
-
-            bg-white/[0.04]
-            backdrop-blur-2xl
-
-            border border-white/10
-
-            shadow-[0_0_40px_rgba(168,85,247,0.2)]
-            "
-          />
-
-          {/* 👨 IMAGE */}
-          <motion.img
-            src="/assets/Sahil_kumar_profile.png"
-            alt="profile"
-
-            animate={{
-              y: [0, -20, 0],
-            }}
-
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-            }}
-
-            className="
-            relative z-10
-
-            w-[240px]
-            sm:w-[280px]
-            md:w-[380px]
-
-            object-contain
-            "
-          />
-
-          {/* ✨ SMALL FLOATING BALL */}
-          <motion.div
-            animate={{
-              y: [0, -20, 0],
-              x: [0, 10, 0],
-            }}
-
-            transition={{
-              duration: 5,
-              repeat: Infinity,
-            }}
-
-            className="
-            absolute
-
-            top-10
-            right-4 md:right-10
-
-            w-10 h-10
-
-            rounded-full
-
-            bg-purple-500/30
-
-            blur-md
-            "
-          />
-
-          {/* ✨ SECOND FLOATING BALL */}
-          <motion.div
-            animate={{
-              y: [0, 20, 0],
-              x: [0, -10, 0],
-            }}
-
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-            }}
-
-            className="
-            absolute
-
-            bottom-16
-            left-4 md:left-10
-
-            w-14 h-14
-
-            rounded-full
-
-            bg-pink-500/20
-
-            blur-lg
-            "
-          />
+            <div
+              className="
+                absolute -bottom-3 -left-3
+                w-12 h-12
+                border-b border-l
+                border-white/40
+              "
+            />
+          </div>
         </motion.div>
+      </motion.div>
+
+      {/* Center scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          delay: 1.2,
+          duration: 0.8,
+        }}
+        className="
+          absolute
+          bottom-5 sm:bottom-7
+          left-1/2 -translate-x-1/2
+          z-20
+          flex flex-col
+          items-center justify-center
+          gap-2
+        "
+      >
+        <Link
+          to="about"
+          smooth={true}
+          duration={600}
+          className="
+            cursor-pointer
+            flex flex-col
+            items-center
+            gap-2
+          "
+        >
+          <span
+            className="
+              whitespace-nowrap
+              text-[10px]
+              uppercase tracking-[0.3em]
+              text-gray-400
+            "
+          >
+            Scroll to explore
+          </span>
+
+          <motion.div
+            animate={{ y: [0, 7, 0] }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="
+              w-7 h-10
+              rounded-full
+              border border-white/40
+              flex justify-center
+              pt-2
+            "
+          >
+            <span
+              className="
+                w-1 h-2
+                rounded-full
+                bg-white
+              "
+            />
+          </motion.div>
+        </Link>
       </motion.div>
     </section>
   );
 }
+
+
+
+
+
+

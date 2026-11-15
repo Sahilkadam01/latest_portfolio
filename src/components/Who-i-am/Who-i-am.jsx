@@ -1,356 +1,503 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import TextType from "../typingEffect/TypingEffect"
+import { motion } from "framer-motion";
+import TextType from "../typingEffect/TypingEffect";
+
 import {
   FiCode,
   FiPenTool,
   FiZap,
 } from "react-icons/fi";
 
+// Skills data
+const skills = [
+  {
+    number: "01",
+    icon: FiCode,
+    title: "Frontend Development",
+    description:
+      "Building responsive, interactive, and modern user interfaces using React, Tailwind CSS, and smooth animations.",
+    technologies: "React.js · JavaScript · Tailwind CSS",
+  },
+  {
+    number: "02",
+    icon: FiPenTool,
+    title: "UI / UX Design",
+    description:
+      "Designing clean, user-focused interfaces with modern layouts, strong visual hierarchy, and thoughtful interactions.",
+    technologies: "Figma · Responsive Design · Wireframing",
+  },
+  {
+    number: "03",
+    icon: FiZap,
+    title: "Performance Optimization",
+    description:
+      "Creating fast, optimized, and scalable experiences with clean architecture and efficient development practices.",
+    technologies: "Optimization · SEO · Clean Code",
+  },
+];
+
+// Statistics
+const stats = [
+  { value: "2.8+", label: "Years of Experience" },
+  { value: "20+", label: "Projects Completed" },
+  { value: "10+", label: "Clients" },
+];
+
+// Reusable scroll fade animation
+const Reveal = ({ children, className = "", delay = 0 }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{
+        once: true,
+        amount: 0.05,
+      }}
+      transition={{
+        duration: 0.9,
+        delay,
+        ease: "easeOut",
+      }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
 export default function WhoIam() {
-  const ref = useRef(null);
-
-  // 🎯 SCROLL TRACK
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-
-  // 🔥 IMAGE PARALLAX
-  const yImage = useTransform(scrollYProgress, [0, 1], [40, -40]);
-  const scaleImage = useTransform(scrollYProgress, [0, 1], [0.95, 1.05]);
-
   return (
     <section
-      ref={ref}
-      className="relative py-20 md:py-32 bg-black text-white overflow-hidden"
+      id="about"
+      className="
+        relative
+        overflow-hidden
+        bg-[#050505]
+        text-white
+        py-[60px]
+        md:py-[90px]
+      "
     >
-      {/* BACKGROUND */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0b0b1a] to-black" />
+      <div
+        className="
+          relative
+          max-w-7xl
+          mx-auto
+          px-[30px]
+          sm:px-8
+          lg:px-10
+        "
+      >
 
-      {/* TOP GLOW */}
-      <div className="absolute left-1/2 top-0 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-purple-600/20 blur-[120px] rounded-full -translate-x-1/2" />
+        {/* ================= INTRO SECTION ================= */}
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
+        <div className="
+          max-w-4xl
+          mx-auto
+          text-center
+          mb-16
+          md:mb-20
+        ">
 
-        {/* 🔥 TITLE */}
-        <motion.div
-          initial={{ opacity: 0, y: 80, filter: "blur(10px)" }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-            filter: "blur(0px)",
-          }}
-          transition={{ duration: 1 }}
-          viewport={{ once: false, amount: 0.3 }}
-          className="text-center max-w-3xl mx-auto"
-        >
-          <h2 className="text-3xl md:text-5xl font-bold leading-tight">
-            About <span className="text-purple-400">Me</span>
-          </h2>
+          <Reveal>
+            <div className="
+              inline-flex
+              items-center
+              justify-center
+              gap-3
+              mb-7
+            ">
+              <span className="w-8 h-px bg-white/30" />
 
-          <p className="mt-6 text-gray-300 leading-relaxed text-sm md:text-lg">
-            I am a passionate <TextType 
-  text={["Python Developer","Full Stack Developer", "Programmer"]}
-  typingSpeed={75}
-  pauseDuration={1500}
-  showCursor
-  cursorCharacter="_"
-  texts={["Python Developer","Full Stack Developer", "Programmer"]}
-  deletingSpeed={50}
-  variableSpeedEnabled={false}
-  variableSpeedMin={60}
-  variableSpeedMax={120}
-  cursorBlinkDuration={0.5}
-/> focused on building modern,
-            responsive, and visually engaging web applications. I love creating
-            smooth user experiences with clean, scalable, and efficient code.
-          </p>
-        </motion.div>
+              <span className="
+                text-[10px]
+                sm:text-xs
+                uppercase
+                tracking-[0.25em]
+                text-gray-500
+              ">
+                Get to know me
+              </span>
 
-        {/* 🔥 MAIN GRID */}
-        <div className="mt-16 md:mt-24 grid lg:grid-cols-2 gap-14 md:gap-20 items-center">
+              <span className="w-8 h-px bg-white/30" />
+            </div>
+          </Reveal>
 
-          {/* 🔥 PREMIUM IMAGE SECTION */}
-          <motion.div
-            style={{
-              y: yImage,
-              scale: scaleImage,
-            }}
-            initial={{ opacity: 0, x: -100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: false }}
-            className="relative flex justify-center items-center"
-          >
+          <Reveal delay={0.1}>
+            <h2 className="
+              text-4xl
+              sm:text-5xl
+              md:text-6xl
+              lg:text-7xl
+              font-semibold
+              tracking-[-0.055em]
+              leading-[1.1]
+            ">
+              More than code.
+              <br />
 
-            {/* 🔥 OUTER GLOW */}
-            <motion.div
-              animate={{
-                scale: [1, 1.08, 1],
-                opacity: [0.4, 0.7, 0.4],
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="absolute w-[320px] md:w-[450px]
-              h-[320px] md:h-[450px]
-              rounded-full bg-purple-500/20 blur-[100px]"
-            />
+              <span className="text-gray-500">
+                Driven by creativity.
+              </span>
+            </h2>
+          </Reveal>
 
-            {/* 🔥 ROTATING GRADIENT RING */}
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{
-                duration: 12,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-              className="absolute w-[280px] sm:w-[340px] md:w-[420px]
-              h-[280px] sm:h-[340px] md:h-[420px]
-              rounded-full border border-purple-500/20"
-              style={{
-                background:
-                  "conic-gradient(from 0deg, rgba(168,85,247,0.8), transparent, rgba(168,85,247,0.8))",
-              }}
-            />
+          <Reveal delay={0.2}>
+            <div className="
+              mt-7
+              text-base
+              sm:text-lg
+              text-gray-400
+              font-light
+            ">
+              I'm a passionate{" "}
+              <span className="text-white font-medium">
+                <TextType
+                  text={[
+                    "Python Developer",
+                    "Full Stack Developer",
+                    "Programmer",
+                  ]}
+                  typingSpeed={75}
+                  pauseDuration={1500}
+                  showCursor
+                  cursorCharacter="_"
+                  deletingSpeed={50}
+                  variableSpeedEnabled={false}
+                  cursorBlinkDuration={0.5}
+                />
+              </span>
+            </div>
+          </Reveal>
 
-            {/* 🔥 SECOND RING */}
-            <motion.div
-              animate={{ rotate: -360 }}
-              transition={{
-                duration: 18,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-              className="absolute w-[250px] sm:w-[310px] md:w-[390px]
-              h-[250px] sm:h-[310px] md:h-[390px]
-              rounded-full border border-purple-400/10"
-            />
+          <Reveal delay={0.3}>
+            <p className="
+              max-w-2xl
+              mx-auto
+              mt-5
+              text-sm
+              sm:text-base
+              leading-7
+              sm:leading-8
+              text-gray-400
+            ">
+              I enjoy transforming ideas into meaningful digital
+              experiences through modern technologies, thoughtful
+              design, and clean, scalable code.
+            </p>
+          </Reveal>
 
-            {/* 🔥 FLOATING IMAGE */}
-            <motion.div
-              animate={{
-                y: [0, -15, 0],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="relative z-10"
-            >
+          <Reveal delay={0.4}>
+            <div className="
+              flex
+              items-center
+              justify-center
+              gap-3
+              mt-10
+            ">
+              <span className="w-10 h-px bg-white/10" />
 
-              {/* LIGHT BEHIND IMAGE */}
-              <div className="absolute inset-0 bg-purple-500/10 blur-3xl scale-110 rounded-full" />
+              <span className="
+                text-[10px]
+                tracking-[0.25em]
+                text-gray-500
+              ">
+                ABOUT ME
+              </span>
 
-              <img
-                src="/assets/Sahil_kumar_profile.png"
-                alt="Sahil Kumar"
-                className="
-                relative
-                w-[240px]
-                sm:w-[300px]
-                md:w-[380px]
-                object-cover
-                drop-shadow-[0_0_45px_rgba(168,85,247,0.35)]
-                hover:scale-[1.03]
-                transition duration-500
-                "
-              />
-            </motion.div>
+              <span className="w-10 h-px bg-white/10" />
+            </div>
+          </Reveal>
 
-            {/* 🔥 PARTICLES */}
-            <motion.div
-              animate={{
-                y: [0, -20, 0],
-                opacity: [0.3, 1, 0.3],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-              }}
-              className="absolute top-10 right-10 w-3 h-3 bg-purple-400 rounded-full blur-sm"
-            />
-
-            <motion.div
-              animate={{
-                y: [0, 20, 0],
-                opacity: [0.2, 0.8, 0.2],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-              }}
-              className="absolute bottom-16 left-8 w-2 h-2 bg-purple-300 rounded-full blur-sm"
-            />
-
-            
-          </motion.div>
-
-          
-
-          {/* 🔥 CARDS */}
-          <div className="space-y-6">
-
-            {/* CARD 1 */}
-            <motion.div
-              initial={{ opacity: 0, x: 100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: false }}
-              whileHover={{
-                y: -8,
-                scale: 1.02,
-              }}
-              className="group relative overflow-hidden rounded-2xl
-              bg-white/5 border border-white/10
-              backdrop-blur-xl p-6 md:p-8"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-purple-500/10 to-purple-500/0 opacity-0 group-hover:opacity-100 transition duration-500" />
-
-              <div className="relative z-10 flex gap-5 items-start">
-                <div className="w-14 h-14 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 text-2xl border border-purple-500/20">
-                  <FiCode />
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-semibold text-purple-400">
-                    Frontend Development
-                  </h3>
-
-                  <p className="text-gray-300 mt-3 leading-relaxed text-sm md:text-base">
-                    Building responsive, interactive, and modern user interfaces
-                    using React, Tailwind CSS, and smooth animations.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* CARD 2 */}
-            <motion.div
-              initial={{ opacity: 0, x: 100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.9 }}
-              viewport={{ once: false }}
-              whileHover={{
-                y: -8,
-                scale: 1.02,
-              }}
-              className="group relative overflow-hidden rounded-2xl
-              bg-white/5 border border-white/10
-              backdrop-blur-xl p-6 md:p-8"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-purple-500/10 to-purple-500/0 opacity-0 group-hover:opacity-100 transition duration-500" />
-
-              <div className="relative z-10 flex gap-5 items-start">
-                <div className="w-14 h-14 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 text-2xl border border-purple-500/20">
-                  <FiPenTool />
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-semibold text-purple-400">
-                    UI / UX Design
-                  </h3>
-
-                  <p className="text-gray-300 mt-3 leading-relaxed text-sm md:text-base">
-                    Designing clean, user-focused interfaces with modern layouts,
-                    strong visual hierarchy, and premium interactions.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* CARD 3 */}
-            <motion.div
-              initial={{ opacity: 0, x: 100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: false }}
-              whileHover={{
-                y: -8,
-                scale: 1.02,
-              }}
-              className="group relative overflow-hidden rounded-2xl
-              bg-white/5 border border-white/10
-              backdrop-blur-xl p-6 md:p-8"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-purple-500/10 to-purple-500/0 opacity-0 group-hover:opacity-100 transition duration-500" />
-
-              <div className="relative z-10 flex gap-5 items-start">
-                <div className="w-14 h-14 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 text-2xl border border-purple-500/20">
-                  <FiZap />
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-semibold text-purple-400">
-                    Performance Optimization
-                  </h3>
-
-                  <p className="text-gray-300 mt-3 leading-relaxed text-sm md:text-base">
-                    Creating fast, optimized, and scalable experiences with clean
-                    architecture and smooth performance.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-          </div>
         </div>
 
-        {/* 🔥 STATS */}
-        <motion.div
-          initial={{ opacity: 0, y: 80 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: false }}
-          className="mt-16 md:mt-24 grid grid-cols-3 gap-4 md:gap-8"
-        >
-          {[
-            { value: "2+", label: "Years" },
-            { value: "20+", label: "Projects" },
-            { value: "10+", label: "Clients" },
-          ].map((item, i) => (
-            <motion.div
-              key={i}
-              whileHover={{
-                y: -5,
-                scale: 1.03,
-              }}
-              className="relative overflow-hidden rounded-2xl
-              bg-white/5 border border-white/10
-              backdrop-blur-lg p-5 md:p-8 text-center"
+        {/* ================= MAIN CONTENT ================= */}
+
+        <div className="
+          grid
+          grid-cols-1
+          lg:grid-cols-2
+          gap-14
+          md:gap-16
+          lg:gap-20
+          items-center
+        ">
+
+          {/* PROFILE IMAGE */}
+
+          <Reveal className="w-full">
+
+            <div className="
+              relative
+              max-w-[340px]
+              sm:max-w-[390px]
+              lg:max-w-[420px]
+              mx-auto
+              lg:mx-0
+            ">
+
+              <div className="
+                relative
+                aspect-[4/5]
+                overflow-hidden
+                bg-[#111]
+                border
+                border-white/10
+              ">
+                <img
+                  src="/assets/Sahil_kumar_profile.png"
+                  alt="Sahil Kumar - Software Developer"
+                  loading="lazy"
+                  className="
+                    w-full
+                    h-full
+                    object-contain
+                    grayscale-[15%]
+                    hover:grayscale-0
+                    transition-all
+                    duration-500
+                  "
+                />
+              </div>
+
+              {/* Image frame corners */}
+
+              <div className="
+                absolute
+                -top-3
+                -left-3
+                w-12
+                h-12
+                border-t
+                border-l
+                border-white/40
+                pointer-events-none
+              " />
+
+              <div className="
+                absolute
+                -bottom-3
+                -right-3
+                w-12
+                h-12
+                border-b
+                border-r
+                border-white/40
+                pointer-events-none
+              " />
+
+              {/* Image caption */}
+
+              <div className="
+                flex
+                justify-between
+                items-center
+                mt-5
+                text-[10px]
+                uppercase
+                tracking-[0.2em]
+                text-gray-500
+              ">
+                <span>Software Developer</span>
+                <span>India</span>
+              </div>
+
+            </div>
+
+          </Reveal>
+
+          {/* SKILLS AND EXPERTISE */}
+
+          <div className="w-full">
+
+            <Reveal>
+              <div className="mb-8">
+
+                <p className="
+                  text-[10px]
+                  sm:text-xs
+                  uppercase
+                  tracking-[0.25em]
+                  text-gray-500
+                  mb-3
+                ">
+                  What I do
+                </p>
+
+                <h3 className="
+                  text-2xl
+                  sm:text-3xl
+                  font-medium
+                  tracking-tight
+                ">
+                  Skills & Expertise
+                </h3>
+
+              </div>
+            </Reveal>
+
+            <div className="border-t border-white/10">
+
+              {skills.map((skill, index) => {
+                const Icon = skill.icon;
+
+                return (
+                  <Reveal
+                    key={skill.number}
+                    delay={index * 0.1}
+                  >
+
+                    <div className="
+                      group
+                      py-6
+                      sm:py-7
+                      border-b
+                      border-white/10
+                    ">
+
+                      <div className="
+                        flex
+                        gap-4
+                        sm:gap-5
+                        items-start
+                      ">
+
+                        {/* Number */}
+
+                        <span className="
+                          text-xs
+                          text-gray-600
+                          pt-1
+                          tabular-nums
+                        ">
+                          {skill.number}
+                        </span>
+
+                        <div className="flex-1 min-w-0">
+
+                          {/* Title and icon */}
+
+                          <div className="
+                            flex
+                            justify-between
+                            items-center
+                            gap-3
+                          ">
+
+                            <h4 className="
+                              text-base
+                              sm:text-xl
+                              font-medium
+                              text-white
+                              group-hover:text-gray-300
+                              transition-colors
+                              duration-300
+                            ">
+                              {skill.title}
+                            </h4>
+
+                            <Icon className="
+                              text-gray-500
+                              text-xl
+                              shrink-0
+                              group-hover:text-white
+                              transition-colors
+                              duration-300
+                            " />
+
+                          </div>
+
+                          {/* Description */}
+
+                          <p className="
+                            mt-3
+                            text-sm
+                            leading-7
+                            text-gray-400
+                          ">
+                            {skill.description}
+                          </p>
+
+                          {/* Technologies */}
+
+                          <p className="
+                            mt-4
+                            text-[9px]
+                            sm:text-[11px]
+                            uppercase
+                            tracking-[0.12em]
+                            leading-6
+                            text-gray-600
+                          ">
+                            {skill.technologies}
+                          </p>
+
+                        </div>
+                      </div>
+                    </div>
+
+                  </Reveal>
+                );
+              })}
+
+            </div>
+
+          </div>
+
+        </div>
+
+        {/* ================= STATISTICS ================= */}
+
+        <div className="
+          mt-20
+          md:mt-24
+          pt-10
+          md:pt-12
+          border-t
+          border-white/10
+          grid
+          grid-cols-1
+          sm:grid-cols-3
+          gap-10
+          sm:gap-6
+        ">
+
+          {stats.map((stat, index) => (
+            <Reveal
+              key={stat.label}
+              delay={index * 0.1}
             >
-              <div className="absolute inset-0 bg-purple-500/5 opacity-0 hover:opacity-100 transition duration-500" />
 
-              <h3 className="relative z-10 text-2xl md:text-4xl font-bold text-purple-400">
-                {item.value}
-              </h3>
+              <div className="text-center">
 
-              <p className="relative z-10 text-gray-300 mt-2 text-sm md:text-base">
-                {item.label}
-              </p>
-            </motion.div>
+                <h3 className="
+                  text-4xl
+                  sm:text-5xl
+                  font-semibold
+                  tracking-[-0.05em]
+                  text-white
+                ">
+                  {stat.value}
+                </h3>
+
+                <p className="
+                  mt-3
+                  text-[10px]
+                  sm:text-xs
+                  uppercase
+                  tracking-[0.18em]
+                  text-gray-500
+                ">
+                  {stat.label}
+                </p>
+
+              </div>
+
+            </Reveal>
           ))}
-        </motion.div>
+
+        </div>
 
       </div>
     </section>
   );
 }
-
-{/* <div className="mt-8 flex justify-center">
-  <a
-    href="/assets/Sahil_Kumar_CV.pdf"
-    download
-    className="relative inline-flex items-center justify-center px-6 py-3
-    rounded-xl bg-purple-500 text-white font-medium
-    border border-purple-400/30
-    hover:bg-purple-600 hover:scale-105
-    transition duration-300 shadow-lg shadow-purple-500/20"
-  >
-    Download CV
-  </a>
-</div> */}
