@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-scroll";
@@ -10,6 +11,13 @@ const navLinks = [
   { name: "Skills", to: "skills" },
   { name: "Contact", to: "contact" },
 ];
+
+const logoGradient = {
+  backgroundImage:
+    "linear-gradient(90deg, #5ee7df 0%, #35b9e9 48%, #6485ff 100%)",
+  WebkitBackgroundClip: "text",
+  WebkitTextFillColor: "transparent",
+};
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -60,9 +68,10 @@ export default function Navbar() {
     >
       {/* NAVBAR HEADER */}
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative z-[60]">
+
         {/* LOGO */}
         <h1 className="text-xl font-bold text-white">
-          <span className="text-purple-500">SAHIL </span>KUMAR
+          <span style={logoGradient}>SAHIL KUMAR</span>
         </h1>
 
         {/* DESKTOP MENU */}
@@ -75,13 +84,13 @@ export default function Navbar() {
               duration={500}
               offset={-80}
               spy={true}
-              activeClass="text-purple-400"
-              className="cursor-pointer text-gray-300 hover:text-purple-400 transition relative group"
+              activeClass="!text-[#5ee7df]"
+              className="cursor-pointer text-gray-300 hover:!text-[#5ee7df] transition relative group"
             >
               {link.name}
 
               {/* UNDERLINE */}
-              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-purple-400 transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#5ee7df] transition-all duration-300 group-hover:w-full"></span>
             </Link>
           ))}
         </div>
@@ -164,7 +173,7 @@ export default function Navbar() {
                       sm:text-3xl
                       font-medium
                       text-gray-300
-                      hover:text-purple-400
+                      hover:!text-[#5ee7df]
                       transition-colors
                     "
                   >
@@ -179,6 +188,3 @@ export default function Navbar() {
     </motion.nav>
   );
 }
-
-
-

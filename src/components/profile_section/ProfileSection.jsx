@@ -77,7 +77,7 @@ export default function ProfileSection() {
         {/* LEFT CONTENT */}
         <div className="order-2 md:order-1 text-center md:text-left">
 
-          {/* Availability */}
+          {/* Availability
           <motion.div
             variants={item}
             className="
@@ -97,7 +97,7 @@ export default function ProfileSection() {
             >
               Available for opportunities
             </span>
-          </motion.div>
+          </motion.div> */}
 
           {/* Main heading */}
           <motion.h1
