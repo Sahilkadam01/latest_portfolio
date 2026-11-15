@@ -13,8 +13,6 @@ import {
 } from "react-icons/si";
 
 const skills = [
-
-
   {
     title: "Operating System",
     tech: ["Linux", "Ubntu", "Fedora", "Kali-Linux", "Windows", "OS"],
@@ -35,12 +33,11 @@ const skills = [
     tech: ["Node.js", "Express", "MongoDB", "DBMS", "Next.js", "PHP"],
     level: 75,
   },
-{
+  {
     title: "Programming Languages",
     tech: ["C", "Cpp/C++", "Python", "Java", ".Net"],
     level: 85,
   },
-
   {
     title: "Performance Optimization",
     tech: ["Lazy Loading", "Code Splitting", "SEO", "Core-Web-Vitals", "Preload", "Prefetch"],
@@ -48,7 +45,7 @@ const skills = [
   },
 ];
 
-// 🔥 ICONS
+// ICONS
 const techIcons = {
   React: FaReact,
   JavaScript: FaJs,
@@ -68,7 +65,7 @@ export default function Skills() {
     offset: ["start end", "end start"],
   });
 
-  // 🔥 PARALLAX
+  // PARALLAX
   const y = useTransform(scrollYProgress, [0, 1], [80, -80]);
 
   return (
@@ -112,8 +109,7 @@ export default function Skills() {
         style={{ y }}
         className="relative z-10 max-w-7xl mx-auto px-4 md:px-6"
       >
-
-        {/* 🔥 TITLE */}
+        {/* TITLE */}
         <motion.div
           initial={{
             opacity: 0,
@@ -129,19 +125,18 @@ export default function Skills() {
           viewport={{ once: false }}
           className="text-center mb-14 md:mb-20"
         >
-          <h2 className="text-3xl md:text-5xl font-bold">
-            My <span className="text-purple-400">Skills</span>
+          <h2 className="text-3xl md:text-5xl font-bold text-white">
+            My <span className="text-[#a3a3a3]">Skills</span>
           </h2>
 
-          <p className="text-gray-400 mt-4 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+          <p className="text-[#929292] mt-4 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
             Technologies and tools I use to craft immersive,
             high-performance digital experiences.
           </p>
         </motion.div>
 
-        {/* 🔥 GRID */}
+        {/* GRID */}
         <div className="grid md:grid-cols-2 gap-6 md:gap-10">
-
           {skills.map((skill, i) => (
             <motion.div
               key={i}
@@ -171,8 +166,7 @@ export default function Skills() {
               backdrop-blur-xl
               p-6 md:p-8"
             >
-
-              {/* 🔥 SHINE EFFECT */}
+              {/* SHINE EFFECT */}
               <div
                 className="
                 absolute inset-0
@@ -184,20 +178,19 @@ export default function Skills() {
                 "
               />
 
-              {/* 🔥 BORDER GLOW */}
-              <div className="absolute inset-0 rounded-3xl border border-purple-500/0 group-hover:border-purple-500/20 transition duration-500" />
+              {/* BORDER GLOW */}
+              <div className="absolute inset-0 rounded-3xl border border-white/0 group-hover:border-white/15 transition duration-500" />
 
               {/* CONTENT */}
               <div className="relative z-10">
 
                 {/* TITLE */}
-                <h3 className="text-2xl font-semibold text-purple-400 mb-6">
+                <h3 className="text-2xl font-semibold text-[#e5e5e5] mb-6">
                   {skill.title}
                 </h3>
 
                 {/* TECH */}
                 <div className="flex flex-wrap gap-3 mb-8">
-
                   {skill.tech.map((tech, index) => {
                     const Icon = techIcons[tech];
 
@@ -214,11 +207,10 @@ export default function Skills() {
                         rounded-full
                         bg-white/5
                         border border-white/10
-                        hover:border-purple-500/30
+                        hover:border-white/30
                         transition
                         "
                       >
-
                         {/* ICON */}
                         {Icon && (
                           <motion.span
@@ -236,13 +228,13 @@ export default function Skills() {
                                   : 0,
                               ease: "linear",
                             }}
-                            className="text-purple-400 text-base"
+                            className="text-[#b5b5b5] text-base"
                           >
                             <Icon />
                           </motion.span>
                         )}
 
-                        <span className="text-sm text-gray-300">
+                        <span className="text-sm text-[#bdbdbd]">
                           {tech}
                         </span>
                       </motion.div>
@@ -252,13 +244,14 @@ export default function Skills() {
 
                 {/* PROGRESS */}
                 <div>
-                  <div className="flex justify-between text-sm text-gray-400 mb-3">
+                  <div className="flex justify-between text-sm text-[#929292] mb-3">
                     <span>Expertise</span>
-                    <span>{skill.level}%</span>
+                    <span className="text-[#e5e5e5] font-medium">
+                      {skill.level}%
+                    </span>
                   </div>
 
                   <div className="w-full h-3 rounded-full bg-white/10 overflow-hidden">
-
                     <motion.div
                       initial={{ width: 0 }}
                       whileInView={{
@@ -273,21 +266,18 @@ export default function Skills() {
                       h-full
                       rounded-full
                       bg-gradient-to-r
-                      from-purple-500
-                      via-purple-400
-                      to-purple-300
+                      from-[#777]
+                      via-[#b5b5b5]
+                      to-[#e5e5e5]
                       relative
                       overflow-hidden
                       "
                     >
-
-                      {/* GLOW INSIDE BAR */}
-                      <div className="absolute inset-0 bg-white/20 blur-sm" />
-
+                      {/* BAR HIGHLIGHT */}
+                      <div className="absolute inset-0 bg-white/15" />
                     </motion.div>
                   </div>
                 </div>
-
               </div>
             </motion.div>
           ))}
