@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
@@ -9,6 +10,13 @@ const navLinks = [
   { name: "Contact", id: "contact" },
 ];
 
+const gradientText = {
+  backgroundImage:
+    "linear-gradient(90deg, #5ee7df 0%, #35b9e9 48%, #6485ff 100%)",
+  WebkitBackgroundClip: "text",
+  WebkitTextFillColor: "transparent",
+};
+
 export default function Footer() {
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({
@@ -19,10 +27,10 @@ export default function Footer() {
   return (
     <footer className="relative bg-black text-white pt-20 pb-10 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-[#0a0a1a] to-black" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-[#080f11] to-black" />
 
-      {/* Glow */}
-      <div className="absolute left-1/2 top-0 w-[300px] h-[300px] bg-purple-600/20 blur-[120px] -translate-x-1/2" />
+      {/* Subtle Glow */}
+      <div className="absolute left-1/2 top-0 w-[300px] h-[300px] bg-teal-500/10 blur-[120px] -translate-x-1/2" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
 
@@ -36,7 +44,7 @@ export default function Footer() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-2xl font-bold mb-4">
-              <span className="text-purple-500">SAHIL </span>KUMAR
+              <span style={gradientText}>SAHIL KUMAR</span>
             </h2>
 
             <p className="text-gray-400">
@@ -51,14 +59,16 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9 }}
           >
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-lg font-semibold mb-4 text-gray-200">
+              Quick Links
+            </h3>
 
             <div className="flex flex-col gap-3">
               {navLinks.map((link) => (
                 <button
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
-                  className="text-gray-400 hover:text-purple-400 transition text-left"
+                  className="text-gray-400 hover:text-[#5ee7df] transition text-left"
                 >
                   {link.name}
                 </button>
@@ -72,13 +82,17 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
-            <h3 className="text-lg font-semibold mb-4">Connect</h3>
+            <h3 className="text-lg font-semibold mb-4 text-gray-200">
+              Connect
+            </h3>
 
             <div className="flex gap-6">
               <motion.a
                 whileHover={{ scale: 1.2 }}
                 href="https://github.com/Sahilkadam01"
-                className="text-gray-400 hover:text-purple-400 text-xl transition"
+                target="_blank"
+                rel="noreferrer"
+                className="text-gray-400 hover:text-[#5ee7df] text-xl transition"
               >
                 <FaGithub />
               </motion.a>
@@ -86,15 +100,17 @@ export default function Footer() {
               <motion.a
                 whileHover={{ scale: 1.2 }}
                 href="https://www.linkedin.com/in/sahil-kumar-913909252?utm_source=share_via&utm_content=profile&utm_medium=member_android"
-                className="text-gray-400 hover:text-purple-400 text-xl transition"
+                target="_blank"
+                rel="noreferrer"
+                className="text-gray-400 hover:text-[#35b9e9] text-xl transition"
               >
                 <FaLinkedin />
               </motion.a>
 
               <motion.a
                 whileHover={{ scale: 1.2 }}
-                href="Sahilkadam2701@gmail.com"
-                className="text-gray-400 hover:text-purple-400 text-xl transition"
+                href="mailto:Sahilkadam2701@gmail.com"
+                className="text-gray-400 hover:text-[#6485ff] text-xl transition"
               >
                 <FaEnvelope />
               </motion.a>
