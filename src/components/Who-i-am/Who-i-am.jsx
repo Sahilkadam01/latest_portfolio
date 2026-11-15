@@ -278,7 +278,7 @@ export default function WhoIam() {
                 -bottom-3
                 -right-3
                 w-12
-                h-12
+                h-23
                 border-b
                 border-r
                 border-white/40

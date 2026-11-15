@@ -328,23 +328,17 @@ export default function ProfileSection() {
             </div>
 
             {/* Minimal frame details */}
-            <div
-              className="
-                absolute -top-3 -left-3
-                w-12 h-12
-                border-t border-l
-                border-white/40
-              "
-            />
+            {/* Top Left */}
+            <div className="absolute -top-3 -left-3 w-12 h-12 border-t border-l border-white/40" />
 
-            <div
-              className="
-                absolute -bottom-3 -left-3
-                w-12 h-12
-                border-b border-l
-                border-white/40
-              "
-            />
+            {/* Bottom Left */}
+            <div className="absolute -bottom-3 -left-3 w-12 h-12 border-b border-l border-white/40" />
+
+            {/* Top Right */}
+            <div className="absolute -top-3 -right-3 w-12 h-12 border-t border-r border-white/40" />
+
+            {/* Bottom Right */}
+            <div className="absolute -bottom-3 -right-3 w-12 h-12 border-b border-r border-white/40" />
           </div>
         </motion.div>
       </motion.div>
