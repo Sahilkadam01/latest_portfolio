@@ -12,13 +12,24 @@ export default function Loader() {
 
         {/* NAME / LOGO */}
         <motion.h1
-          initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 1 }}
-          className="text-4xl md:text-5xl font-bold text-white"
-        >
-          <span className="text-purple-500">SAHIL</span> KUMAR
-        </motion.h1>
+  initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
+  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+  transition={{ duration: 1 }}
+  className="text-4xl md:text-5xl font-bold"
+>
+  <span
+    className="text-transparent bg-clip-text"
+    style={{
+      color: "#1dafd3",
+      backgroundImage:
+        "linear-gradient(to right, #1dafd3 4%, #26e34c 72%)",
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+    }}
+  >
+    SAHIL KUMAR
+  </span>
+</motion.h1>
 
         {/* SUBTEXT */}
         <motion.p
@@ -36,7 +47,11 @@ export default function Loader() {
             initial={{ width: "0%" }}
             animate={{ width: "100%" }}
             transition={{ duration: 1.8, ease: "easeInOut" }}
-            className="h-full bg-gradient-to-r from-purple-500 to-purple-300"
+            style={{
+              backgroundImage:
+                "linear-gradient(to right, #1dafd3 4%, #26e34c 72%)",
+            }}
+            className="h-full"
           />
         </div>
 
