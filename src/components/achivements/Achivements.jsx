@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { useState } from "react";
 
@@ -20,7 +21,6 @@ const achievements = [
     date: "2022",
     image: "/assets/certificates/Web_Development_Certificate.jpg",
   },
-  
   {
     title: "Ethical Hacking",
     issuer: "Great Learning",
@@ -49,11 +49,11 @@ export default function Achievements() {
       className="relative py-32 bg-black text-white overflow-hidden"
     >
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0b0b1f] to-black" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-[#080f11] to-black" />
 
-      {/* Glow */}
-      <div className="absolute left-10 top-20 w-[300px] h-[300px] bg-purple-600/20 blur-[120px]" />
-      <div className="absolute right-10 bottom-20 w-[300px] h-[300px] bg-blue-600/20 blur-[120px]" />
+      {/* Subtle Background Accents */}
+      <div className="absolute left-10 top-20 w-[300px] h-[300px] bg-teal-500/10 blur-[120px]" />
+      <div className="absolute right-10 bottom-20 w-[300px] h-[300px] bg-slate-500/10 blur-[120px]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
 
@@ -65,7 +65,16 @@ export default function Achievements() {
           className="text-center mb-20"
         >
           <h2 className="text-4xl md:text-5xl font-bold">
-            My <span className="text-purple-400">Achievements</span>
+            <span
+              style={{
+                backgroundImage:
+                  "linear-gradient(90deg, #5ee7df 0%, #35b9e9 48%, #6485ff 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              My Achievements
+            </span>
           </h2>
 
           <p className="text-gray-400 mt-4">
@@ -88,7 +97,7 @@ export default function Achievements() {
                 transition={{ delay: i * 0.15 }}
                 whileHover={{
                   y: -10,
-                  boxShadow: "0 0 30px rgba(168,85,247,0.3)",
+                  boxShadow: "0 0 25px rgba(52,249,226,0.12)",
                 }}
                 onClick={() => setSelected(item)}
                 className="cursor-pointer bg-white/5 border border-white/10 rounded-2xl overflow-hidden backdrop-blur-lg"
@@ -114,11 +123,14 @@ export default function Achievements() {
                     {item.issuer}
                   </p>
 
-                  <span className="text-purple-400 text-sm block mb-4">
+                  <span className=" text-sm block mb-4" style={{
+                      color: "#35b9e9",
+                      backgroundClip: "padding-box",
+                    }}>
                     {item.date}
                   </span>
 
-                  {/* 🔥 BUTTON */}
+                  {/* Certificate Button */}
                   <motion.button
                     onClick={(e) => {
                       e.stopPropagation();
@@ -126,12 +138,25 @@ export default function Achievements() {
                     }}
                     whileHover={{
                       scale: 1.05,
-                      boxShadow: "0 0 20px rgba(168,85,247,0.4)",
+                      boxShadow: "0 5px 18px rgba(94,231,223,0.15)",
                     }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-4 py-2 text-sm rounded-lg bg-gradient-to-r from-purple-600 to-purple-500 font-medium"
+                    className="px-4 py-2 text-sm rounded-lg bg-[#353b3c] hover:bg-[#2c3232] font-semibold transition-colors"
+                    style={{
+                      color: "#35b9e9",
+                      backgroundClip: "padding-box",
+                    }}
                   >
-                    See Certificate →
+                    <span
+                      style={{
+                        backgroundImage:
+                          "linear-gradient(90deg, #5ee7df 0%, #35b9e9 48%, #6485ff 100%)",
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                      }}
+                    >
+                      See Certificate →
+                    </span>
                   </motion.button>
                 </div>
               </motion.div>
@@ -140,7 +165,7 @@ export default function Achievements() {
         </div>
       </div>
 
-      {/* 🔥 MODAL */}
+      {/* Modal */}
       {selected && (
         <motion.div
           initial={{ opacity: 0 }}
