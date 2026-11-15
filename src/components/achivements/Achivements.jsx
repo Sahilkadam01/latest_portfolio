@@ -46,7 +46,7 @@ export default function Achievements() {
   return (
     <section
       id="achievements"
-      className="relative py-32 bg-black text-white overflow-hidden"
+      className="relative py-16 md:py-22.5 bg-black text-white overflow-hidden"
     >
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-[#080f11] to-black" />
