@@ -1062,7 +1062,7 @@ const projects = [
     category: "WEB DEVELOPMENT",
     description:
       "A modern hotel website designed to showcase hospitality, elegant spaces, and a smooth browsing experience through responsive layouts and animations.",
-    image: "/assets/projects/Hotel-site.jpeg",
+    image: "/assets/projects/Hotel-site.webp",
     tech: ["React", "Tailwind CSS", "Framer Motion"],
     live: "https://hotel-groups.vercel.app/",
     github: "https://github.com/Sahilkadam01/Hotel-Website",
