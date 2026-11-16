@@ -25,8 +25,7 @@ app = FastAPI(
 
 # CORS CONFIGURATION
 frontend_origins = os.getenv(
-    "https://sahil-kadam.vercel.app",
-    "http://localhost:5173"
+    "https://sahil-kadam.vercel.app"
 )
 
 allowed_origins = [
