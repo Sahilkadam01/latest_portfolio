@@ -23,16 +23,21 @@ app = FastAPI(
     version="1.0.0"
 )
 
+
 # CORS CONFIGURATION
-frontend_origins = os.getenv(
+
+frontend_origin = os.getenv(
+    "FRONTEND_ORIGIN",
     "https://sahil-kadam.vercel.app"
 )
 
 allowed_origins = [
     origin.strip().rstrip("/")
-    for origin in frontend_origins.split(",")
+    for origin in frontend_origin.split(",")
     if origin.strip()
 ]
+
+logger.info("Allowed CORS origins: %s", allowed_origins)
 
 app.add_middleware(
     CORSMiddleware,
@@ -41,6 +46,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 
 class ChatRequest(BaseModel):
