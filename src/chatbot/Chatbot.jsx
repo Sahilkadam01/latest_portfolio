@@ -14,9 +14,10 @@ import {
 import ChatMessage from "./ChatMessage";
 import "./Chatbot.css";
 
-const API_URL =
-  import.meta.env.CHATBOT_API_URL ||
-  "https://latest-portfolio-ltpq.onrender.com/";
+const API_URL = (
+  import.meta.env.VITE_CHATBOT_API_URL ||
+  "https://latest-portfolio-ltpq.onrender.com/"
+).replace(/\/+$/, "");
 
 const suggestions = [
   "Tell me about Sahil",
