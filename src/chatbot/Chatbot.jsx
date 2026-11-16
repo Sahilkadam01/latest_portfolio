@@ -16,7 +16,7 @@ import "./Chatbot.css";
 
 const API_URL =
   import.meta.env.CHATBOT_API_URL ||
-  "http://localhost:8000";
+  "https://latest-portfolio-ltpq.onrender.com/";
 
 const suggestions = [
   "Tell me about Sahil",
