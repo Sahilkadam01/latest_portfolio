@@ -1,0 +1,73 @@
+
+{
+  "personal": {
+    "name": "Sahil Kumar",
+    "role": "Software Developer",
+    "experience": "2.8 years",
+    "location": "India",
+    "summary": "Software developer with experience in full-stack development, frontend development, backend development, and website maintenance."
+  },
+  "skills": {
+    "frontend": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React.js",
+      "Tailwind CSS",
+      "Framer Motion"
+    ],
+    "backend": [
+      "Node.js",
+      "Express.js",
+      "Python",
+      "FastAPI"
+    ],
+    "database": [
+      "MongoDB"
+    ],
+    "tools": [
+      "Git",
+      "GitHub",
+      "Figma"
+    ]
+  },
+  "experience": [
+    {
+      "company": "MediaTek",
+      "responsibilities": [
+        "Maintained the company website.",
+        "Created product and campaign landing pages.",
+        "Worked on website optimization.",
+        "Deployed the website on a China IIS server."
+      ]
+    },
+    {
+      "company": "The Web Plant",
+      "responsibilities": [
+        "Worked on individual web development projects.",
+        "Handled project development and delivery."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "AI Job Hunter Automation",
+      "description": "AI-powered job hunting automation application.",
+      "technologies": [
+        "React",
+        "Python",
+        "FastAPI",
+        "Gemini AI"
+      ]
+    },
+    {
+      "name": "Portfolio Website",
+      "description": "A personal developer portfolio with responsive layouts and animations.",
+      "technologies": [
+        "React",
+        "Tailwind CSS",
+        "Framer Motion"
+      ]
+    }
+  ]
+}

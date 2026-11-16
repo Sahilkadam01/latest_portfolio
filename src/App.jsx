@@ -13,6 +13,7 @@ import Achievements from "./components/achivements/Achivements"
 import Experience from './components/experience/Experience';
 import ScrollProgress from './components/scroller/Scroller';
 import PageTransition from './components/scroller/PageTransition';
+import Chatbot from "./chatbot/Chatbot";
 
 function App() {
 
@@ -67,6 +68,8 @@ const [loading, setLoading] = useState(true);
    </section>
    
    <Footer/>
+
+   <Chatbot />
    </main>
    </>
    )}
