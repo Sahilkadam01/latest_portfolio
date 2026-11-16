@@ -1,6 +1,6 @@
 
+import logging
 import os
-
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -8,24 +8,22 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
-from app.chatbot import generate_answer
-
-
-# Load environment variables
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 load_dotenv(BASE_DIR / ".env")
 
+from app.chatbot import generate_answer
 
-# Initialize FastAPI
+# Logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 app = FastAPI(
     title="Sahil Kumar Portfolio Chatbot",
     description="AI-powered portfolio assistant using Gemini",
     version="1.0.0"
 )
 
-
-# CORS configuration
+# CORS
 frontend_origins = os.getenv(
     "FRONTEND_ORIGIN",
     "http://localhost:5173"
@@ -46,7 +44,6 @@ app.add_middleware(
 )
 
 
-# Request model
 class ChatRequest(BaseModel):
     message: str = Field(
         ...,
@@ -55,7 +52,6 @@ class ChatRequest(BaseModel):
     )
 
 
-# Root endpoint
 @app.get("/")
 def home():
     return {
@@ -63,15 +59,11 @@ def home():
     }
 
 
-# Health endpoint
 @app.get("/health")
 def health():
-    return {
-        "status": "healthy"
-    }
+    return {"status": "healthy"}
 
 
-# Chat endpoint
 @app.post("/chat")
 def chat(request: ChatRequest):
 
@@ -84,19 +76,14 @@ def chat(request: ChatRequest):
         )
 
     try:
-
         answer = generate_answer(message)
 
-        return {
-            "reply": answer
-        }
+        return {"reply": answer}
 
-    except Exception as error:
-
-        # Log the actual error on the backend
-        print(f"Chatbot error: {error}")
+    except Exception:
+        logger.exception("Chatbot generation failed")
 
         raise HTTPException(
             status_code=502,
-            detail="Unable to generate a response. Please try again."
+            detail="Unable to generate a response. Check backend terminal logs."
         )
