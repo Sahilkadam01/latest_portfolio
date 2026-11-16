@@ -23,14 +23,14 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# CORS
+# CORS CONFIGURATION
 frontend_origins = os.getenv(
-    "https://sahil-kadam.vercel.app/",
+    "https://sahil-kadam.vercel.app",
     "http://localhost:5173"
 )
 
 allowed_origins = [
-    origin.strip()
+    origin.strip().rstrip("/")
     for origin in frontend_origins.split(",")
     if origin.strip()
 ]
@@ -39,8 +39,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=allowed_origins,
     allow_credentials=False,
-    allow_methods=["GET", "POST"],
-    allow_headers=["Content-Type"]
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
